@@ -1,1 +1,1 @@
-# IT-project-mangaement
+# IT-project-management
