@@ -29,5 +29,15 @@
       "mode": "production"
     }
   },
-  "entities": {}
+  "entities": {
+    "Person": {
+      "source": "dbo.MyTestPersonTable",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    }
+  }
 }
