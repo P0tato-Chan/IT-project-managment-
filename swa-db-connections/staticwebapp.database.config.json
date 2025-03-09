@@ -30,8 +30,8 @@
     }
   },
   "entities": {
-    "Person": {
-      "source": "dbo.MyTestPersonTable",
+    "customer": {
+      "source": "dbo.customer",
       "permissions": [
         {
           "actions": ["*"],
