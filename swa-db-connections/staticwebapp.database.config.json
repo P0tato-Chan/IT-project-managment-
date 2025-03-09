@@ -38,7 +38,7 @@
           "role": "anonymous"
         }
       ]
-    }
+    },
     "employee": {
       "source": "dbo.employee",
       "permissions": [
@@ -47,7 +47,7 @@
           "role": "anonymous"
         }
       ]
-    }
+    },
     "invoice": {
       "source": "dbo.invoice",
       "permissions": [
@@ -56,7 +56,7 @@
           "role": "anonymous"
         }
       ]
-    }
+    },
     "repair_schedule": {
       "source": "dbo.repair_schedule",
       "permissions": [
@@ -65,7 +65,7 @@
           "role": "anonymous"
         }
       ]
-    }
+    },
     "task": {
       "source": "dbo.task",
       "permissions": [
@@ -74,7 +74,7 @@
           "role": "anonymous"
         }
       ]
-    }
+    },
     "vehicle": {
       "source": "dbo.vehicle",
       "permissions": [
@@ -83,7 +83,7 @@
           "role": "anonymous"
         }
       ]
-    }
+    },
     "visit": {
       "source": "dbo.visit",
       "permissions": [
