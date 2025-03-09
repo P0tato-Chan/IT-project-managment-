@@ -1,5 +1,6 @@
   async function list() {
-  const endpoint = '/data-api/rest/customer';
+  var e = document.getElementById("tableselect");
+  const endpoint = '/data-api/rest/' + e.options[e.selectedIndex].text;
   const response = await fetch(endpoint);
   const data = await response.json();
   console.table(data.value);
