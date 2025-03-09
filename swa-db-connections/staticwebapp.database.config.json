@@ -39,5 +39,59 @@
         }
       ]
     }
+    "employee": {
+      "source": "dbo.employee",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    }
+    "invoice": {
+      "source": "dbo.invoice",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    }
+    "repair_schedule": {
+      "source": "dbo.repair_schedule",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    }
+    "task": {
+      "source": "dbo.task",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    }
+    "vehicle": {
+      "source": "dbo.vehicle",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    }
+    "visit": {
+      "source": "dbo.visit",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    }
   }
 }
