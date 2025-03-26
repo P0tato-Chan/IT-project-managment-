@@ -13,7 +13,7 @@ async function get() {
 
   if (f = 'id'){
     const id = document.getElementById("search").value
-    const endpoint = `/data-api/rest/` + e + '/id';
+    const endpoint = `/data-api/rest/` + e + '/Id';
     const response = await fetch(`${endpoint}/${id}`);
     const result = await response.json();
     console.table(result.value);
