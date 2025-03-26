@@ -18,6 +18,13 @@ async function get() {
     const result = await response.json();
     console.table(result.value);
   }
+  if (f = 'lname'){
+    const lname = document.getElementById("search").value
+    const endpoint = `/data-api/rest/` + e + '/' + e + '_lname';
+    const response = await fetch(`${endpoint}/${lname}`);
+    const result = await response.json();
+    console.table(result.value);
+  }
 }
 
 
