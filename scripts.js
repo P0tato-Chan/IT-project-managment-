@@ -13,9 +13,9 @@ async function get() {
   const search = document.getElementById("search").value.trim();
 
   const fieldMap = {
-    id: e + '_id'
+    id: e + '_id',
     lname: e + '_lname'
-  }
+  };
 
   const endpoint = `/data-api/rest/${e}/${fieldMap[f]}`;
   const response = await fetch(`${endpoint}/${search}`);
