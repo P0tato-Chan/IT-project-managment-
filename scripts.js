@@ -10,18 +10,18 @@
 async function get() {
   var e = document.getElementById("tableSelect").value;
   var f = document.getElementById("filter").value;
+  const search = document.getElementById("search").value.trim()
 
   const fieldMap = {
     id: e + '_id',
     lname: e + '_lname'
   };
 
-  const search = f === 'lname' 
-    ? `'${document.getElementById("search").value.trim()}'` 
-    : document.getElementById("search").value.trim();
-  
-  const endpoint = `/data-api/rest/${e}/${fieldMap[f]}`;
-  const response = await fetch(`${endpoint}/${encodeURIComponent(search)}`);
+  const endpoint = `/data-api/rest/${e}/${fieldMap[f]}/${encodeURIComponent(search)}`;
+  const response = await fetch(endpoint, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json',}
+        });
   const result = await response.json();
   console.table(result.value);
   
