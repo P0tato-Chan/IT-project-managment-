@@ -23,8 +23,12 @@ async function get() {
 
         try {
             const response = await fetch(endpoint);
+            console.table(result.value);
+          
         }
-  console.table(result.value);
+  catch (error) {
+            console.error('Fetch error:', error);
+        }
   
 }
 
