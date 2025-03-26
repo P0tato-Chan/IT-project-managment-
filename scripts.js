@@ -22,7 +22,8 @@ async function get() {
             : `/data-api/rest/${e}/${fieldMap[f]}/${search}`;
 
         try {
-            const result = await fetch(endpoint);
+            const response = await fetch(endpoint);
+            const result = await response.json();
             console.table(result.value);
           
         }
