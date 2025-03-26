@@ -19,7 +19,6 @@ async function get() {
 
   const endpoint = `/data-api/rest/${e}/${fieldMap[f]}`;
   const response = await fetch(`${endpoint}/` + search);
-  const response = await fetch(endpoint);
   const result = await response.json();
   console.table(result.value);
   
