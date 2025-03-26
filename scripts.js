@@ -6,20 +6,20 @@
   console.table(data.value);
 }
 
-//unchanged
+
 async function get() {
   var e = document.getElementById("tableSelect").value;
   var f = document.getElementById("filter").value;
 
-  if (f = 'id'){
-    const id = document.getElementById("search").value
+  if (f === 'id'){
+    const id = document.getElementById("search").value.trim();
     const endpoint = `/data-api/rest/` + e + '/' + e + '_id';
     const response = await fetch(`${endpoint}/${id}`);
     const result = await response.json();
     console.table(result.value);
   }
-  else if (f = 'lname'){
-    const lname = document.getElementById("search").value
+  else if (f === 'lname'){
+    const lname = document.getElementById("search").value.trim();
     const endpoint = `/data-api/rest/` + e + '/' + e + '_lname';
     const response = await fetch(`${endpoint}/${lname}`);
     const result = await response.json();
@@ -28,6 +28,7 @@ async function get() {
 }
 
 
+//unchanged
 async function update() {
 
 const id = 1;
