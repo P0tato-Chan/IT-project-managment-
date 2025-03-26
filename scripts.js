@@ -18,8 +18,8 @@ async function get() {
   };
 
   const endpoint = f === 'lname'
-            ? `/data-api/rest/${e}?customer_lname=${encodeURIComponent(searchValue)}`
-            : `/data-api/rest/${e}/${fieldMap[f]}/${searchValue}`;
+            ? `/data-api/rest/${e}?customer_lname=${encodeURIComponent(search)}`
+            : `/data-api/rest/${e}/${fieldMap[f]}/${search}`;
 
         try {
             const response = await fetch(endpoint);
