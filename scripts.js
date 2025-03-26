@@ -8,12 +8,19 @@
 
 //unchanged
 async function get() {
-  const id = 1;
-  const endpoint = `/data-api/rest/Person/Id`;
-  const response = await fetch(`${endpoint}/${id}`);
-  const result = await response.json();
-  console.table(result.value);
+  var e = document.getElementById("tableSelect").value;
+  var f = document.getElementById("filter").value;
+
+  if (f = id){
+    const id = document.getElementById("search").value
+    const endpoint = `/data-api/rest/` + e + '/id';
+    const response = await fetch(`${endpoint}/${id}`);
+    const result = await response.json();
+    console.table(result.value);
+  }
 }
+
+
 async function update() {
 
 const id = 1;
@@ -30,6 +37,8 @@ const response = await fetch(`${endpoint}/${id}`, {
 const result = await response.json();
 console.table(result.value);
 }
+
+
 async function create() {
 
 const data = {
@@ -45,6 +54,8 @@ const response = await fetch(endpoint, {
 const result = await response.json();
 console.table(result.value);
 }
+
+
 async function del() {
   const id = 3;
   const endpoint = '/data-api/rest/Person/Id';
