@@ -17,9 +17,13 @@ async function get() {
     lname: e + '_lname'
   };
 
-  const endpoint = `/data-api/rest/${e}/${fieldMap[f]}`;
-  const response = await fetch(`${endpoint}/${search}`);
-  const result = await response.json();
+  const endpoint = f === 'lname'
+            ? `/data-api/rest/${e}?customer_lname=${encodeURIComponent(searchValue)}`
+            : `/data-api/rest/${e}/${fieldMap[f]}/${searchValue}`;
+
+        try {
+            const response = await fetch(endpoint);
+        }
   console.table(result.value);
   
 }
