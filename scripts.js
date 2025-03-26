@@ -11,7 +11,7 @@ async function get() {
   var e = document.getElementById("tableSelect").value;
   var f = document.getElementById("filter").value;
 
-  if (f = id){
+  if (f = 'id'){
     const id = document.getElementById("search").value
     const endpoint = `/data-api/rest/` + e + '/id';
     const response = await fetch(`${endpoint}/${id}`);
