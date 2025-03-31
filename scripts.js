@@ -43,9 +43,8 @@ if (table === 'customer'){
   console.error(`${table}: Unknown table type`);
   return;
 }
-
-const endpoint = '/data-api/rest/${table}/${table}_id/${id}';
-const response = await fetch(endpoint, {
+const endpoint = '/data-api/rest/' + table + '/' + table + '_id';
+const response = await fetch(`${endpoint}/${id}`, {
   method: "PUT",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(data)
