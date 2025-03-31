@@ -34,7 +34,7 @@ let data;
 if (table === 'customer'){
   data = {
     customer_fname: a,
-    Customerlname: b,
+    customer_lname: b,
     address: c,
     mobile: d,
     email: e
