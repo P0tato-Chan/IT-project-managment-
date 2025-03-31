@@ -28,15 +28,19 @@ async function get() {
 }
 
 
-//unchanged
-async function update() {
+async function update(table, id, a, b, c, d, e) {
 
-const id = 1;
-const data = {
-  Name: "Molly"
-};
+if (table === customer){
+  const data = {
+    customer_fname: a,
+    Customerlname: b,
+    address: c,
+    mobile: d,
+    email: e
+  };
+}
 
-const endpoint = '/data-api/rest/Person/Id';
+const endpoint = '/data-api/rest/' + table;
 const response = await fetch(`${endpoint}/${id}`, {
   method: "PUT",
   headers: { "Content-Type": "application/json" },
@@ -47,6 +51,8 @@ console.table(result.value);
 }
 
 
+
+//unchanged
 async function create() {
 
 const data = {
