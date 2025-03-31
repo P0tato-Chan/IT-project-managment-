@@ -44,7 +44,7 @@ if (table === 'customer'){
   return;
 }
 
-const endpoint = '/data-api/rest/' + table;
+const endpoint = '/data-api/rest/' + table + '/' + table + '_id';
 const response = await fetch(`${endpoint}/${id}`, {
   method: "PUT",
   headers: { "Content-Type": "application/json" },
