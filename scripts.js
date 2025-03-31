@@ -17,7 +17,7 @@ async function get() {
     lname: e + '_lname'
   };
 
-  const endpoint = `/data-api/rest/${e}/${fieldMap[f]}/${encodeURIComponent(search)}`;
+  const endpoint = '/data-api/rest/' + table + '/'  + fieldMap[f] + '/' + encodeURIComponent(search);
   const response = await fetch(endpoint, {
             method: 'GET',
             headers: {'Content-Type': 'application/json',}
