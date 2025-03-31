@@ -40,16 +40,22 @@ if (table === 'customer'){
     email: e
   };
 }else {
-  console.error(table + ": Unknown table type");
+  console.error(`${table}: Unknown table type`);
   return;
 }
 
-const endpoint = '/data-api/rest/' + table + '/' + table + '_id';
-const response = await fetch(`${endpoint}/${id}`, {
+const endpoint = '/data-api/rest/${table}/${table}_id/${id}';
+const response = await fetch(endpoint, {
   method: "PUT",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(data)
 });
+if (!response.ok) {
+      console.error(`Error: ${response.status} - ${response.statusText}`);
+      const errorMsg = await response.text();
+      console.error(`Details: ${errorMsg}`);
+      return;
+    }
 const result = await response.json();
 console.table(result.value);
 }
