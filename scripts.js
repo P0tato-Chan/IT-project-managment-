@@ -29,15 +29,19 @@ async function get() {
 
 
 async function update(table, id, a, b, c, d, e) {
-
+let data;
+  
 if (table === 'customer'){
-  const data = {
+  data = {
     customer_fname: a,
     Customerlname: b,
     address: c,
     mobile: d,
     email: e
   };
+}else {
+  console.error("Unknown table type");
+  return;
 }
 
 const endpoint = '/data-api/rest/' + table;
