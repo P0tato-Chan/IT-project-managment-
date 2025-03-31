@@ -30,7 +30,7 @@ async function get() {
 
 async function update(table, id, a, b, c, d, e) {
 
-if (table === customer){
+if (table === 'customer'){
   const data = {
     customer_fname: a,
     Customerlname: b,
