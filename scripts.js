@@ -40,7 +40,7 @@ if (table === 'customer'){
     email: e
   };
 }else {
-  console.error("Unknown table type");
+  console.error(table + ": Unknown table type");
   return;
 }
 
