@@ -3,15 +3,11 @@ async function list(e) {
   const response = await fetch(endpoint);
   const data = await response.json();
   console.log(data.value);
-  
-  const maxId = data.value.reduce((max, e) => 
-  e.customer_id > max ? e.customer_id : max, 0);
-  console.log("Max id:", maxId);
+  return data
 }
 
 
-async function get() {
-  var e = document.getElementById("tableSelect").value;
+async function get(e) {
   var f = document.getElementById("filter").value;
   const search = document.getElementById("search").value.trim()
 
@@ -74,25 +70,39 @@ console.table(result.value);
 }
 
 
+async function create(table, a, b, c, d, e) {
 
-//unchanged
-async function create() {
-
-const data = {
-  Name: "Pedro"
-};
-
-const endpoint = `/data-api/rest/Person/`;
-const response = await fetch(endpoint, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(data)
-});
-const result = await response.json();
-console.table(result.value);
+  const newId = list(table)
+  const maxId = newId.value.reduce((max, z) => 
+  z.customer_id > max ? z.customer_id : max, 0);
+  console.log("Max id:", maxId);
+  
+  if (table === 'customer'){
+    data = {
+      customer_id: maxId + 1,
+      customer_fname: a,
+      customer_lname: b,
+      address: c,
+      mobile: d,
+      email: e
+    };
+  }else {
+    console.error(`${table}: Unknown table type`);
+    return;
+  }
+  
+  const endpoint = `/data-api/rest/Person/`;
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  });
+  const result = await response.json();
+  console.table(result.value);
 }
 
 
+//unchanged
 async function del() {
   const id = 3;
   const endpoint = '/data-api/rest/Person/Id';
