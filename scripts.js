@@ -22,7 +22,7 @@ async function get() {
             headers: {'Content-Type': 'application/json',}
         });
   const result = await response.json();
-  const output = result.filter(c => c.fieldMap[f] === search);
+  const output = result.value.filter(c => c.fieldMap[f] === search);
   console.table(output);
 }
 
