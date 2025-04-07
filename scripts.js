@@ -24,7 +24,7 @@ async function get() {
   const result = await response.json();
   const d = fieldMap[f];
   console.log(Array.isArray(result.value));
-  const output = result.value.filter(c => c.d === search);
+  const output = result.value.filter(c => c[fieldMap[f]] === search);
   console.table(output);
 }
 
