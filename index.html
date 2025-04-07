@@ -8,7 +8,7 @@
   <option value="customer" selected= "selected">customer</option>
   <option value="employee">employee</option>
     </select>
-    <button id="list" onclick="list()">List</button>
+    <button id="list" onclick="list(document.getElementById('tableSelect').value)">List</button>
     <button id="get" onclick="get()">Get</button>
     <button id="create" onclick="create()">Create</button>
     <button id="delete" onclick="del()">Delete</button>
