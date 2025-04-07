@@ -9,8 +9,8 @@
   <option value="employee">employee</option>
     </select>
     <button id="list" onclick="list(document.getElementById('tableSelect').value)">List</button>
-    <button id="get" onclick="get()">Get</button>
-    <button id="create" onclick="create()">Create</button>
+    <button id="get" onclick="get(document.getElementById('tableSelect').value)">Get</button>
+    <button id="create" onclick="create(document.getElementById('tableSelect').value)">Create</button>
     <button id="delete" onclick="del()">Delete</button>
     <select id="filter">
         <option value="id" selected= "selected">ID</option>
