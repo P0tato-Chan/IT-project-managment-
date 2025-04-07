@@ -3,6 +3,10 @@ async function list(e) {
   const response = await fetch(endpoint);
   const data = await response.json();
   console.log(data.value);
+  
+  const maxId = data.value((max, e) => 
+  e.customer_id > max ? e.customer_id : max, 0);
+  console.log("Max id:", maxId);
 }
 
 
