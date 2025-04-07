@@ -15,15 +15,15 @@ async function get() {
     id: e + '_id',
     lname: e + '_lname'
   };
+  
   if (f == 'id'){
-  const endpoint = '/data-api/rest/' + e + '/'  + fieldMap[f] + '/' + search;
-  const endpoint = '/data-api/rest/' + e;
-  const response = await fetch(endpoint, {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json',}
-        });
-  const result = await response.json();
-  console.table(result.value);
+    const endpoint = '/data-api/rest/' + e + '/'  + fieldMap[f] + '/' + search;
+    const response = await fetch(endpoint, {
+              method: 'GET',
+              headers: {'Content-Type': 'application/json',}
+          });
+    const result = await response.json();
+    console.table(result.value);
   }else{
     const endpoint = '/data-api/rest/' + e;
     const response = await fetch(endpoint, {
@@ -32,7 +32,6 @@ async function get() {
           });
     const result = await response.json();
     const d = fieldMap[f];
-    console.log(d);
     const output = result.value.filter(c => c[fieldMap[f]] === search);
     console.table(output);
   }
