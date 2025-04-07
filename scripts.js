@@ -1,8 +1,8 @@
-  async function list(e) {
+async function list(e) {
   const endpoint = '/data-api/rest/' + e;
   const response = await fetch(endpoint);
   const data = await response.json();
-  console.log(data);
+  console.table(data);
 }
 
 
@@ -16,14 +16,14 @@ async function get() {
     lname: e + '_lname'
   };
 
-  const endpoint = '/data-api/rest/' + e + '/'  + fieldMap[f] + '/' + search;
+  const endpoint = '/data-api/rest/' + e;
   const response = await fetch(endpoint, {
             method: 'GET',
             headers: {'Content-Type': 'application/json',}
         });
   const result = await response.json();
-  console.table(result.value);
-  
+  const output = result.filter(c => c.fieldMap[f] === search);
+  console.table(output);
 }
 
 
