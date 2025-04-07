@@ -2,7 +2,7 @@ async function list(e) {
   const endpoint = '/data-api/rest/' + e;
   const response = await fetch(endpoint);
   const data = await response.json();
-  console.table(data);
+  console.log(data.value);
 }
 
 
