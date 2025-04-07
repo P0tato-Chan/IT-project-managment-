@@ -71,15 +71,10 @@ console.table(result.value);
 
 
 async function create(table, a, b, c, d, e) {
-
-  const newId = list(table)
-  const maxId = newId.value.reduce((max, z) => 
-  z.customer_id > max ? z.customer_id : max, 0);
-  console.log("Max id:", maxId);
+  let data;
   
   if (table === 'customer'){
     data = {
-      customer_id: maxId + 1,
       customer_fname: a,
       customer_lname: b,
       address: c,
@@ -91,7 +86,7 @@ async function create(table, a, b, c, d, e) {
     return;
   }
   
-  const endpoint = `/data-api/rest/Person/`;
+  const endpoint = '/data-api/rest/' + table + '/';
   const response = await fetch(endpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
