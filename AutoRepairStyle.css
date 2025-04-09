@@ -345,3 +345,88 @@ color:rgb(228, 18, 18);
 #sSchedule:active{
   transform: scale(0.9);
 }
+
+/* Appointmet Listings */
+
+#lisitingsButtons{
+  background-color: rgb(228, 18, 18);
+  position: relative;
+  margin-top: 2%;
+  padding-top: 1%;
+  border-radius: 4px;
+  padding-bottom: 1%;  
+}
+
+#visits{
+margin-left: 1%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+background-color: white;
+border-radius: 4px;
+width: 100px;
+height: 25px;
+text-align: center;
+font-size: 20px;
+border-style:none ;
+}
+
+#searchSpan{
+  float: right;
+  margin-right: 1%;
+}
+
+#searchBox{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+background-color: white;
+border-radius: 4px;
+width: 130px;
+height: 25px;
+text-align: left;
+font-size: 15px;
+border-style: none;
+}
+
+#custID{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+background-color: white;
+border-radius: 4px;
+width: 100px;
+height: 27px;
+text-align: center;
+font-size: 15px;
+border-style: none;
+}
+
+#goButton{
+border-style: none;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+background-color: black;
+color: white;
+text-align: center;
+height: 27px;
+width: 30px;
+border-radius: 2px;
+}
+
+.listingTable{
+  height: 42em;
+  width: 80em;
+  border-color: rgb(228, 18, 18);
+  border-style: solid;
+  border-radius: 5px;
+  position: relative;
+  margin:auto;
+  margin-top: 4%;
+}
+
+#add{
+  float: right;
+  margin-right: 8%;
+  margin-top: 2%;
+  color: white;
+  background-color: black;
+  height: 50px;
+  width: 120px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 4px;
+}
