@@ -416,7 +416,7 @@ transform: scale(0.9);
 
 .listingTable{
   height: 42em;
-  width: 80em;
+  width: 75%;
   border-color: rgb(228, 18, 18);
   border-style: solid;
   border-radius: 5px;
