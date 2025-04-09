@@ -96,11 +96,8 @@ async function create(table, a, b, c, d, e) {
   console.table(result.value);
 }
 
-
-//unchanged
-async function del() {
-  const id = 3;
-  const endpoint = '/data-api/rest/Person/Id';
+async function del(table, id) {
+  const endpoint = '/data-api/rest/' + table + '/id';
   const response = await fetch(`${endpoint}/${id}`, {
     method: "DELETE"
   });
