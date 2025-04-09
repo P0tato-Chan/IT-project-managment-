@@ -367,6 +367,7 @@ height: 25px;
 text-align: center;
 font-size: 20px;
 border-style:none ;
+cursor: pointer;
 }
 
 #searchSpan{
@@ -394,6 +395,7 @@ height: 27px;
 text-align: center;
 font-size: 15px;
 border-style: none;
+cursor: pointer;    
 }
 
 #goButton{
@@ -405,6 +407,11 @@ text-align: center;
 height: 27px;
 width: 30px;
 border-radius: 2px;
+cursor: pointer;    
+}
+
+#goButton:active{
+transform: scale(0.9);
 }
 
 .listingTable{
@@ -429,4 +436,9 @@ border-radius: 2px;
   text-align: center;
   font-size: 18px;
   border-radius: 4px;
+  cursor: pointer;  
+}
+
+#add:active{
+    transform: scale(0.9);
 }
