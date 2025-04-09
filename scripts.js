@@ -2,7 +2,7 @@ async function list(e) {
   const endpoint = '/data-api/rest/' + e;
   const response = await fetch(endpoint);
   const data = await response.json();
-  console.log(data.value);
+  console.table(data.value);
   return data
 }
 
@@ -97,7 +97,7 @@ async function create(table, a, b, c, d, e) {
 }
 
 async function del(table, id) {
-  const endpoint = '/data-api/rest/' + table + '/id';
+  const endpoint = '/data-api/rest/' + table + '/' + table + '_id';
   const response = await fetch(`${endpoint}/${id}`, {
     method: "DELETE"
   });
