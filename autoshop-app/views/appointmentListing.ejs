@@ -9,9 +9,12 @@
         <h1 id = "h1">
             Appointment Listings
         </h1>
-
+        <form method="POST" action="/logout" style="margin-bottom: 20px;">
+            <button type="submit">Logout</button>
+          </form>
+          <h1>Welcome, <%= user.fName %></h1>
         <div class = listContainer>
-
+        
             <div id = "lisitingsButtons">
 
             <select id = "visits"> Visits
@@ -36,7 +39,11 @@
             </div>
 
             <div class = "listingTable">
-
+                <ul>
+                    <% data.forEach(item => { %>
+                      <li><%= JSON.stringify(item) %></li>
+                    <% }); %>
+                  </ul>
             </div>
 
             <button id = add> Add Listing </button>

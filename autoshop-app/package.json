@@ -1,0 +1,15 @@
+{
+    "name": "autoshop-app",
+    "version": "1.0.0",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "ejs": "^3.1.8",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "mssql": "^9.1.1",
+        "path": "^0.12.7"
+    }
+}
