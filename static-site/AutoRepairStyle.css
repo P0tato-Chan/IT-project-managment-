@@ -57,7 +57,7 @@
   border-style: solid;
   border-radius: 5px;
   height: 200%;
-  width: 40%;
+  width: 80%;
   padding: 4%;
   padding-bottom: 1%;
   
@@ -117,7 +117,7 @@ color: white;
   position:relative;
   margin: auto;
   margin-top: 5%;
-  display: block;
+  background-color: blue;
 }
 
 /* Employee Login Page */
@@ -195,8 +195,8 @@ color:rgb(228, 18, 18);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 20px;
   font-weight:650;
-  height: 600px;
-  width: 580px;
+  height: 30em;
+  width: 50%;
   color: white;
   background-color: rgb(228, 18, 18);
   border-radius: 5px;
@@ -345,6 +345,7 @@ color:rgb(228, 18, 18);
   cursor: pointer;
   left: 25%;
   margin-top: 70%;
+  z-index: 1;
 }
 #sSchedule:active{
   transform: scale(0.9);
@@ -371,14 +372,12 @@ height: 25px;
 text-align: center;
 font-size: 20px;
 border-style:none ;
-cursor: pointer;
 }
 
 #searchSpan{
   float: right;
   margin-right: 1%;
 }
-
 #searchBox{
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 background-color: white;
@@ -399,7 +398,6 @@ height: 27px;
 text-align: center;
 font-size: 15px;
 border-style: none;
-cursor: pointer;    
 }
 
 #goButton{
@@ -411,16 +409,16 @@ text-align: center;
 height: 27px;
 width: 30px;
 border-radius: 2px;
-cursor: pointer;    
+cursor: pointer;
 }
 
 #goButton:active{
-transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 .listingTable{
   height: 42em;
-  width: 75%;
+  width: 90%;
   border-color: rgb(228, 18, 18);
   border-style: solid;
   border-radius: 5px;
@@ -440,9 +438,251 @@ transform: scale(0.9);
   text-align: center;
   font-size: 18px;
   border-radius: 4px;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 #add:active{
-    transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+th{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: rgb(228, 18, 18);
+  color: white;
+  height: 50px;
+  border-top-style: none;
+}
+
+tr:nth-child(even){
+  background-color: rgba(176, 179, 179, 0.4);
+}
+tr:nth-child(even), td:nth-child(even){
+  background-color: rgba(176, 179, 179, 0.4);
+}
+td{
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+}
+
+/* Add Listing */
+
+.addContainer{
+  margin:auto;
+  margin-top: 7%;
+  width: 35%;
+  height: auto;
+  background-color: rgb(228, 18, 18);
+  position: relative;
+  border-radius: 3px;
+  padding: 10px;
+  min-width: 35%;
+}
+
+.aInfo{
+  position: relative;
+  height: auto;
+  margin-left: 17%;
+  top: 5%;
+  width: auto;
+}
+
+#aFirstName{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  resize: both;
+}
+
+#aFirstName::placeholder{
+  color: white;
+}
+
+#aLastName{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-left: 2%;
+  
+}
+
+#aLastName::placeholder{
+  color: white;
+}
+
+#aPhone{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-top: 3%;
+}
+
+#aAddressZipState{
+  position: relative;
+  
+}
+#aPhone::placeholder{
+  color: white;
+}
+
+#aEmail{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-left: 2%;
+}
+
+#aEmail::placeholder{
+  color: white;
+}
+#aAddress{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-top: 3%;
+}
+#aAddress::placeholder{
+  color: white;
+}
+#aZip{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-left: 2%;
+}
+#aZip::placeholder{
+  color: white;
+}
+
+#aState{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-top: 3%;
+  height: 30px;
+  border-width: 2px;
+  width: 168px;
+}
+#aDate{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-top: 3%;
+  margin-left: 2%;
+  height: 30px;
+  border-width: 2px;
+  width: 168px;
+}
+#aState::placeholder{
+  color: white;
+}
+#aMakeandModel{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-top: 3%;
+}
+#aMakeandModel::placeholder{
+  color: white;
+}
+#aYear{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-left: 2%;
+}
+#aYear::placeholder{
+  color: white;
+}
+#aPlateNumb{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-top: 3%;
+}
+#aPlateNumb::placeholder{
+  color: white;
+}
+#aService{
+  background-color: rgb(228, 18, 18);
+  color: white;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: white;
+  margin-left: 2%;
+  margin-top: 3%;
+  height: 21px;
+  width: 168px;
+  border-width: 2px;
+  margin-bottom: 5%;
+}
+#aService::placeholder{
+  color: white;
+}
+
+#aBack{
+position: relative;
+background-color: black;
+color: white;
+border: none;
+height: 30px;
+width: 20%;
+border-radius: 3px;
+cursor: pointer;
+}
+#aBack:active{
+  transform: scale(0.9);
+}
+#aAdd{
+position: relative;
+background-color: black;
+color: white;
+border: none;
+height: 30px;
+width: 20%;
+border-radius: 3px;
+margin-left: 7%;
+cursor: pointer;
+}
+#aAdd:active{
+  transform: scale(0.9);
+}
+#aButtons{
+position: relative;
+margin-top:2%;
+margin-left: 15%;
 }
