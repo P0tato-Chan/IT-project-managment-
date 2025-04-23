@@ -5,6 +5,11 @@ const config = {
   password: 'r79syE&a2T',
   server: 'autoshop.database.windows.net',
   database: 'autoshop',
+  pool: {
+    max: 20,
+    min: 0,
+    idleTimeoutMillis: 30000
+  },
   options: {
     encrypt: true, 
     trustServerCertificate: true

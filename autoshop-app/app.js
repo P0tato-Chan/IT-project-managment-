@@ -85,6 +85,10 @@ app.get('/appointmentListing', async (req, res) => {
 
 });
 
+app.get('/addListing', (req, res) => {
+  res.render('addListing', { error: null });
+});
+
 app.use((req, res) => {
   res.redirect('/');
 });

@@ -12,9 +12,9 @@
         <form method="POST" action="/logout" style="margin-bottom: 20px;">
             <button type="submit">Logout</button>
           </form>
-          <h1>Welcome, <%= user.fName %></h1>
-        <div class = listContainer>
-        
+          <h1>Welcome, <%= user.employee_fname %></h1>
+          <div class = listContainer>
+
             <div id = "lisitingsButtons">
 
             <select id = "visits"> Visits
@@ -30,26 +30,57 @@
             <select id ="custID">
                customer ID
                <option value = "custID"> customer ID </option>
+               <option value = "custNumb"> phone number </option>
+               <option value = "email"> e-mail </option>
+               <option value = "name"> name </option>
+               <option value = "date"> date </option>
+               <option value = "service"> service </option>
             </select>
 
-            <button id ="goButton">Go</button>
+            <input type = button id ="goButton" value = Go onClick() = go();>
 
             </span>
             
             </div>
+ </div>
+            <table class = "listingTable">
+               <tr>
+                <th width = 100px> Date </th>
+                <th width = 100px> Time </th>
+                <th width = 120px> Customer ID </th>
+                <th width = 205px> First Name </th>
+                <th width = 205px> Last Name </th>
+                 <th width = 190px> E-mail </th>
+                <th> Service </th>
+                <th width = 110px> Vehicle</th>
+                <th width = 100px> Total $ </th>
+               
+        
+            </tr> 
+        
+            <% data.forEach(item => { %>
+                <tr>
+                    <td><%= JSON.stringify(item.customer_id) %></td>
+                    <td><%= JSON.stringify(item.customer_fname) %></td>
+                    <td><%= JSON.stringify(item.customer_lname) %></td>
+                    <td><%= JSON.stringify(item.address) %></td>
+                    <td><%= JSON.stringify(item.mobile) %></td>
+                    <td><%= JSON.stringify(item.email) %></td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                </tr>
+              <% }); %>
 
-            <div class = "listingTable">
-                <ul>
-                    <% data.forEach(item => { %>
-                      <li><%= JSON.stringify(item) %></li>
-                    <% }); %>
-                  </ul>
-            </div>
 
-            <button id = add> Add Listing </button>
-        </div>
+            </table>
 
+           
+            <button id = add> <a href="addListing"> Add Listing </a> </button>
+       
 
+    
 
-    </html>
+    
 </body>
+</html>
