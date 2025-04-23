@@ -28,11 +28,11 @@
    background-color: rgb(228, 18, 18);
    color: white;
    height: 10%;
-   width: 120%;
-   left: -10%;
-   margin-top: -10%;
+   width: 100%;
+   margin-top: 0;
    margin-bottom: 3%;
    padding-top: 12px;
+   padding-bottom: 10px;
    position: relative;
    text-align: center;
    font-weight: 550;
@@ -42,25 +42,24 @@
 
 #mServiceList{
   position: relative;
+  padding: 8%;
+  padding-bottom: 9%;
 }
 
 #mainInfo{
   color: black;
   font-family: sans-serif;
-  font-size: 130%;
-  float: right;
-  position:relative;
-  text-align: left;
-  margin-top: 10%;
-  margin-right: 4%;
+  margin:auto;
+  margin-top: 4%;
+  width: 30%;
+  height: auto;
+  position: relative;
+  border-radius: 5px;
   border-color: black;
   border-style: solid;
-  border-radius: 5px;
-  height: 200%;
-  width: 80%;
-  padding: 4%;
-  padding-bottom: 1%;
-  
+  font-size: 150%;
+  min-width: 25%;
+  justify-content: center;
 }
 
 a{
@@ -72,13 +71,14 @@ color: white;
     border: none;
     color: white;
     border-radius: 4px;
-    font-size: 22px;
+    font-size: 100%;
     text-decoration: none;
-    margin-top: -8%;
-    width: 90%;
-    height: 50%;
+    position:relative;
+    width: 35%;
+    height: 55px;
     font-weight:bold;
-    float: left;
+    left: 30%;
+   
   }
 
 #scheduleButton:active{
@@ -92,11 +92,11 @@ color: white;
     border: none;
     color: white;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 40%;
     font-weight: bolder;
-    padding: 8px;
-    padding-left:16px;
-    padding-right: 16px;
+    width: 12%;
+    height: auto;
+    padding: 2px;
     cursor: pointer;
     position:relative;
     float: right;
@@ -110,15 +110,6 @@ color: white;
     color: white;
     transform: scale(0.9);
 }  
-
-#mContainer{
-  height: 100%;
-  width: 50%;
-  position:relative;
-  margin: auto;
-  margin-top: 5%;
-  background-color: blue;
-}
 
 /* Employee Login Page */
 
@@ -190,132 +181,21 @@ color:rgb(228, 18, 18);
 }
 
 /* Schedule Visit */
-
-#scheduler{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 20px;
-  font-weight:650;
-  height: 30em;
-  width: 50%;
-  color: white;
-  background-color: rgb(228, 18, 18);
-  border-radius: 5px;
+#sSchedule{
   position: relative;
-  margin: auto;
-  margin-top: 5%;
-  padding: 10px;
-}
-
-#sDate{
-  border-style: none;
+  background-color: black;
+  color: white;
+  border: none;
+  height: 30px;
+  width: 20%;
   border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
-
-#sTime{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
-
-#service{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
-
-#appointInfo{
-  float: right;
-  position:relative;
-  margin-right: 10%;
-  margin-top: 7px;
-}
-
-#custInfo{
-  float: left;
-  position:relative;
-  margin-top:-3%;
   margin-left: 10%;
-}
-
-#fName{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
-
-#lName{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
-
-#fAddress{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-
-}
-
-#fZip{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-
-}
-
-#fState{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  width: 168px;
-  margin-bottom: 10px;
-}
-
-#phoneNumb{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
-
-#e-Mail{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
-
-#plateNumb{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
-
-#model{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
-#year{
-  border-style: none;
-  border-radius: 3px;
-  height: 23px;
-  margin-bottom: 10px;
-}
+  cursor: pointer;
+  }
 
 #sHome{
   color: black;
-  top: 5%;
+  top: 15%;
   position: relative;
   cursor: pointer;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -329,23 +209,6 @@ color:rgb(228, 18, 18);
 
 #sHome:active{
   transform: scale(0.9);
-}
-
-#sSchedule{
-  border-style: none;
-  border-radius: 3px;
-  height: 60px;
-  width: 150px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 20px;
-  color: white;
-  background-color: black;
-  position: relative;
-  float: left;
-  cursor: pointer;
-  left: 25%;
-  margin-top: 70%;
-  z-index: 1;
 }
 #sSchedule:active{
   transform: scale(0.9);
@@ -678,6 +541,7 @@ border-radius: 3px;
 margin-left: 7%;
 cursor: pointer;
 }
+
 #aAdd:active{
   transform: scale(0.9);
 }
@@ -686,3 +550,5 @@ position: relative;
 margin-top:2%;
 margin-left: 15%;
 }
+
+
