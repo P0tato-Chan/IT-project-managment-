@@ -8,7 +8,7 @@
 <body>
    
         <h1 id = "h1">
-            Appointment Listings
+            Listings
         </h1>
 
         <div class = listContainer>
@@ -17,6 +17,9 @@
 
             <select id = "visits"> Visits
                 <option value = "visits">Visits</option>
+                <option value = "employees">Employees</option>
+                <option value = "lVehicles">Vehicles</option>
+                <option value = "customerInfo">Customer</option>
 
             </select>
 
@@ -41,6 +44,8 @@
             
             </div>
  </div>
+
+ <div id = sList>
             <table class = "listingTable">
                <tr>
                 <th width = 100px> Date </th>
@@ -102,13 +107,175 @@
 
 
             </table>
-
-           
             <button id = add> <a href="AddListing.html"> Add Listing </a> </button>
-       
+ </div>
 
+<div id = eList hidden>
+            <table id ="lEmployees">
+                <tr>
+                    <th width = 80px>Employee ID</th>
+                    <th width = 100px>Employee Name</th>
+                    <th width = 90px>Employee Role</th>
+                    <th width = 120px>Availability</th>
+                    
+                </tr>
+                <tr>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                    <td>test</td>
+                </tr>
+            </table>
+
+            <button id= eAdd>Add Employee</button>
+            <button id = eEdit>Edit</button>
+           
+</div>   
+
+<div id = vList hidden>
+    <table id = vTable>
+        
+        <tr>
+            <th width = 70px>Customer ID</th>
+            <th width = 90px>Brand</th>
+            <th width = 90px>Model</th>
+            <th width = 70px>Year</th>
+            <th width = 70px>Admission Date</th>
+            <th width = 100px>Status</th>
+            <th width = 70px>Release Date</th>
+        </tr>
+        
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+        </tr>
+    </table>
     
+    <button id= vAdd>Add Employee</button>
+    <button id = vEdit>Edit</button>
+</div>
+
+<div id =cstList hidden>
+    <table id = cstTable>
+        <tr>
+            <th width = 70px>Customer ID</th>
+            <th width = 100px>Name</th>
+            <th width = 80px>Phone Number</th>
+            <th width = 100px>E-mail</th>
+            <th width = 100px>Address</th>
+            <th width = 50px>Balance</th>
+            <th width = 50px>Invoice</th>
+        </tr>
+        
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td><button id = cstInvoice>send invoice</button></td>
+        </tr>
+        
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td><button id = cstInvoice>send invoice</button></td>
+        </tr>
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td><button id = cstInvoice>send invoice</button></td>
+        </tr>
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td><button id = cstInvoice>send invoice</button></td>
+        </tr>
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td><button id = cstInvoice>send invoice</button></td>
+        </tr>
+        <tr>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td>test</td>
+            <td><button id = cstInvoice>send invoice</button></td>
+        </tr>
+    </table>
+
+    <button id="cstEdit">Edit</button>
+</div>    
 
     
 </body>
 </html>
+<script>
+    select.addEventListener('')
+</script>
