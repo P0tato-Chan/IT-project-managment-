@@ -349,6 +349,147 @@ td{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   color: black;
 }
+/* End Appoinment Listing*/
+
+/*Employee Listing Table*/
+
+#lEmployees{
+  height: 30em;
+  width: 90%;
+  border-color: rgb(228, 18, 18);
+  border-style: solid;
+  border-radius: 5px;
+  position: relative;
+  margin:auto;
+  margin-top: 4%;
+}
+
+#eAdd{
+  float: right;
+  margin-right: 8%;
+  margin-top: 2%;
+  margin-left: 1%;
+  color: white;
+  background-color: black;
+  height: 45px;
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#eAdd:active{
+  transform: scale(0.9);
+}
+#eEdit{
+  float: right;
+  margin-right: 3%;
+  margin-top: 2%;
+  color: white;
+  background-color: black;
+  height: 45px;
+  width: 100px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#eEdit:active{
+  transform: scale(0.9);
+}
+
+/*End Employee listing Table*/
+
+/*Vehicle Listing Table*/
+
+#vTable{
+  height: 30em;
+  width: 90%;
+  border-color: rgb(228, 18, 18);
+  border-style: solid;
+  border-radius: 5px;
+  position: relative;
+  margin:auto;
+  margin-top: 4%;
+}
+
+#vAdd{
+  float: right;
+  margin-right: 8%;
+  margin-top: 2%;
+  margin-left: 1%;
+  color: white;
+  background-color: black;
+  height: 45px;
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#vAdd:active{
+  transform: scale(0.9);
+}
+#vEdit{
+  float: right;
+  margin-right: 3%;
+  margin-top: 2%;
+  color: white;
+  background-color: black;
+  height: 45px;
+  width: 100px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#vEdit:active{
+  transform: scale(0.9);
+}
+/*End of Vehicle Listing Table*/
+
+/* Customer lsiting Table */
+
+#cstTable{
+  height: 30em;
+  width: 90%;
+  border-color: rgb(228, 18, 18);
+  border-style: solid;
+  border-radius: 5px;
+  position: relative;
+  margin:auto;
+  margin-top: 4%;
+}
+
+#cstInvoice{
+  border:none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+#cstInvoice:hover{
+  color:rgb(228, 18, 18);
+}
+
+#cstEdit{
+  float: right;
+  margin-right: 5%;
+  margin-top: 2%;
+  margin-left: 1%;
+  color: white;
+  background-color: black;
+  height: 45px;
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#cstEdit:active{
+  transform: scale(0.9);
+}
+/* End Customer Listing Table */
+
 
 /* Add Listing */
 
