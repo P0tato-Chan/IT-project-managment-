@@ -95,6 +95,29 @@ app.get('/schedule', (req, res) => {
   res.render('appointmentSetting', { error: null });
 });
 
+app.post('/schedule', async (req, res) => {
+  const {} = req.body;
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('username', sql.VarChar, fEmpID)
+      .input('password', sql.VarChar, fPassword)
+      .query('SELECT employee_id, employe');
+
+      if (result.recordset.length > 0) {
+        //console.log(result.recordset[0]);
+        req.session.user = result.recordset[0];
+        res.redirect('/employeeDashboard');
+      } else {
+        res.render('login', { error: 'Invalid username or password' });
+      }
+    } catch (err) {
+      console.error(err);
+      res.render('login', { error: 'An error occurred' });
+    }
+});
+
+
 app.post('/login', async (req, res) => {
   const { fEmpID, fPassword } = req.body;
   try {
@@ -202,6 +225,123 @@ app.get('/employeeDashboard', async (req, res) => {
 app.get('/addListing', (req, res) => {
   res.render('addListing', { error: null });
 });
+
+app.get('/addService', async (req, res) => {
+  
+  const id = req.query.id;
+
+  if (!id) {
+    // New Entry
+    return res.render('addService', { entry: {} });
+  }
+
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('id', sql.Int, id)
+      .query('SELECT * FROM service WHERE task_id = @id');
+
+    res.render('addService', { entry: result.recordset[0] || {} });
+  } catch (err) {
+    console.error('addService error:', err);
+    res.status(500).send('Error retrieving entry');
+  }
+});
+
+app.post('/addService', async (req, res) => {
+  const { id, name, description, duration, price } = req.body;
+
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('name', sql.VarChar, name)
+      .input('description', sql.VarChar, description)
+      .input('duration', sql.Int, duration)
+      .input('price', sql.Decimal(10, 2), price);
+
+    if (id) {
+      await result
+        .input('id', sql.Int, id)
+        .query(`
+          UPDATE service 
+          SET task_name=@name, task_description=@description, duration=@duration, task_price=@price 
+          WHERE task_id=@id
+        `);
+    } else {
+      await result.query(`
+        INSERT INTO service (task_name, task_description, duration, task_price) 
+        VALUES (@name, @description, @duration, @price)
+      `);
+    }
+
+    res.redirect('/employeeDashboard');
+  } catch (err) {
+    console.error('addSevice error:', err);
+    res.status(500).send('Error saving entry');
+  }
+});
+
+app.get('/addEmployee', async (req, res) => {
+  const id = req.query.id;
+  if (!id) return res.render('addEmployee', { entry: {} });
+
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('id', sql.Int, id)
+      .query('SELECT * FROM employee WHERE employee_id = @id');
+
+    res.render('addEmployee', { entry: result.recordset[0] || {} });
+  } catch (err) {
+    console.error('Error fetching employee:', err);
+    res.status(500).send('Database error');
+  }
+});
+
+
+app.post('/addEmployee', async (req, res) => {
+  const {
+    id, firstname, lastname, address, mobilephone,
+    email, position, employment_date, active_status, pincode
+  } = req.body;
+
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('firstname', sql.VarChar, firstname)
+      .input('lastname', sql.VarChar, lastname)
+      .input('address', sql.VarChar, address)
+      .input('mobilephone', sql.VarChar, mobilephone)
+      .input('email', sql.VarChar, email)
+      .input('position', sql.VarChar, position)
+      .input('employment_date', sql.Date, employment_date)
+      .input('active_status', sql.Bit, active_status === 'true' || active_status === 'on')
+      .input('pincode', sql.VarChar, pincode);
+
+    if (id) {
+      await result
+        .input('id', sql.Int, id)
+        .query(`
+          UPDATE employee
+          SET employee_fname=@firstname, employee_lname=@lastname, address=@address, mobile=@mobilephone,
+              email=@email, position=@position, employment_date=@employment_date,
+              active_status=@active_status, employee_pin=@pincode
+          WHERE employee_id=@id
+        `);
+    } else {
+      await result.query(`
+        INSERT INTO employee (employee_fname, employee_lname, address, mobile, email, position, employment_date, active_status, employee_pin)
+        VALUES (@firstname, @lastname, @address, @mobilephone, @email, @position, @employment_date, @active_status, @pincode)
+      `);
+    }
+
+    res.redirect('/employeeDashboard');
+  } catch (err) {
+    console.error('Error saving employee:', err);
+    res.status(500).send('Error saving record');
+  }
+});
+
 
 app.use((req, res) => {
   res.redirect('/');

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<meta name = "viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel  = "stylesheet" href = "AutoRepairStyle.css">
+
+<html>
+<body>
+   
+        <h1 id = "h1">
+            <%= entry.task_id ? "Update" : "Create" %> Service
+        </h1>
+
+        <div class = addContainer>
+
+            <div class = "aInfo">
+                <form method="post" action="/addService">
+                    <% if (entry.task_id) { %>
+                        <input type="hidden" name="id" value="<%= entry.task_id %>">
+                      <% } %>
+                      <label>Name:</label><br>
+                      <input type="text" name="name" value="<%= entry.task_name || '' %>"><br>
+                  
+                      <label>Description:</label><br>
+                      <textarea name="description"><%= entry.task_description || '' %></textarea><br>
+                  
+                      <label>Duration:</label><br>
+                      <input type="number" name="duration" value="<%= entry.duration || '' %>"><br>
+                  
+                      <label>Price:</label><br>
+                      <input type="number" step="0.01" name="price" value="<%= entry.task_price || '' %>"><br>
+                  
+                      <br>
+                      <br>
+
+                    <br>
+                    <span id="aButtons">
+                        <button id="aBack" "location.href='/employeeDashboard';">Back</button>
+                        <button id="aAdd" type="submit"><%= entry.task_id ? "Update" : "Create" %></button>
+                    </span>
+                </form>
+            <br>
+
+            
+            </div>
+
+        </div>
+        
+
+</body>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</html>

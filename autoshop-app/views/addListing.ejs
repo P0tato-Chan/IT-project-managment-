@@ -107,13 +107,18 @@
             <br>
 
             <span id="aButtons">
-            <button id="aBack"><a href ="appointmentListing">Back</a></button>
-            <button id="aAdd">Add!</button>
-        </span>
-    </div>
-        
-        
-    </div>
-
-</body>
-</html>
+                <button id="aBack" onclick="goBack()">Back</button>
+                <button id="aAdd">Add!</button>
+            </span>
+        </div>
+            
+            
+        </div>
+    
+    </body>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    </html>

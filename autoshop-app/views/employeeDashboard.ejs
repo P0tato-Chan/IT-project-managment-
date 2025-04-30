@@ -90,12 +90,13 @@
                 <td><%= JSON.stringify(item.task_description).replace(/"/g, '') %></td>
                 <td><%= JSON.stringify(item.duration).replace(/"/g, '') %></td>
                 <td><%= JSON.stringify(item.task_price).replace(/"/g, '') %></td>
-                <td><button onclick="getCellValue(this)" id = svcEdit>Edit</button></td>
+                <td><button onclick="location.href='/addService?id=<%= JSON.stringify(item.task_id) %>';" id= svcEdit>Edit</button></td>
+
             </tr>
           <% }); %>
     </table>
 
-    <button id="svcAdd">Add</button>
+    <button onclick="location.href='/addService';" id="svcAdd">Add</button>
  </div>
 
 <div id = eList hidden>
@@ -115,12 +116,12 @@
                         <td><%= JSON.stringify(item.position).replace(/"/g, '') %></td>
                         <td><%= JSON.stringify(item.active_status).replace(/"/g, '') %></td>
                         
-                        <td><button onclick="getCellValue(this)" id = eEdit>Edit</button></td>
+                        <td><button onclick="location.href='/addEmployee?id=<%= JSON.stringify(item.employee_id) %>';" id= svcEdit>Edit</button></td>
                     </tr>
                   <% }); %>
             </table>
 
-            <button id= eAdd>Add</button>
+            <button onclick="location.href='/addEmployee';" id= eAdd>Add</button>
            
 </div>   
 
