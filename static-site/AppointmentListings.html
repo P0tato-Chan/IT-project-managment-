@@ -8,14 +8,15 @@
 <body>
    
         <h1 id = "h1">
-            Listings
+            Appointment Listings 
+            <button id = alLogout>Logout</button>
         </h1>
 
         <div class = listContainer>
 
             <div id = "lisitingsButtons">
 
-            <select id = "visits"> Visits
+            <select id = "visits" onchange = "showDiv()"> Visits
                 <option value = "visits">Visits</option>
                 <option value = "employees">Employees</option>
                 <option value = "lVehicles">Vehicles</option>
@@ -30,7 +31,7 @@
 
             <select id ="custID">
                customer ID
-               <option value = "custID"> customer ID </option>
+               <option value = "custID" > customer ID </option>
                <option value = "custNumb"> phone number </option>
                <option value = "email"> e-mail </option>
                <option value = "name"> name </option>
@@ -107,6 +108,7 @@
 
 
             </table>
+            <button id="alEdit">Edit</button>
             <button id = add> <a href="AddListing.html"> Add Listing </a> </button>
  </div>
 
@@ -273,9 +275,17 @@
     <button id="cstEdit">Edit</button>
 </div>    
 
+   
+
+
+<script>
     
+    function showDiv(){
+        alert("Working");
+
+    }
+    
+    
+</script>
 </body>
 </html>
-<script>
-    select.addEventListener('')
-</script>
