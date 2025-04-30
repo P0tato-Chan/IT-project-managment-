@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<meta name = "viewport" content="width=device-width, initial-scale=1.0"/>
+
+<link rel  = "stylesheet" href = "AutoRepairStyle.css">
+    <body>
+        <h1 id = h1>
+            Customer Lookup
+        </h1>
+        <div id = EmpLogContainer>
+        <div id = custLoginInfo>
+            <form method="post" action="/customerLookup">
+                <label for="logPhone"> Phone Number:</label>
+                <br>
+                <input type="textbox" id="logPhone" name="logPhone">
+                <br>
+                <button type="submit" id="custLSubmit">Lookup</button>
+                <% if (error) { %>
+                    <p style="color: black; font-size: 14px;"><%= error %></p>
+                  <% } %>
+            </form>
+            
+        </div>
+
+       <div id="custLhome">
+        <a  href="/" id="cLh">Home</a>
+        </div>
+</div>
+    </body>
+    </html>

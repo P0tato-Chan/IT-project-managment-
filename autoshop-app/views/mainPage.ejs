@@ -13,35 +13,25 @@
     </h1> 
          </div>
 
-         <div id = mContainer> 
-            
-            <div id = MainButtons>
-            <button id = scheduleButton><a href= "schedule">Schedule Visit</a></button>
-         </div>
 
-        <div id = mainInfo>
-            <div id = MainServices>
-                Services
-            </div>
+         <div id = mainInfo>
+
+          <div id = MainServices>
+              Services
+          </div>
+          
+          <div id = mServiceList>
             
-            <div id = mServiceList>
-                1) Oil Change
-                <br>
-                2) Brake Repair
-                <br>
-                3) Wheel Alignment
-                <br>
-                4) Tire Rotations
-                <br>
-                5) Battery Replacement
-                <br>
-                6) A/C Services
-                <br>
-                7) Engine Servicing
-                <br>
-                8) Transmission Servicing
-            </div>
-         </div>
+            <% data.forEach(item => { %>
+              <%= JSON.stringify(item.task_id) %>) <%= JSON.stringify(item.task_name).replace(/"/g, '') %> 
+              <p style="padding-left: 30px; font-size: 14px;"><%= JSON.stringify(item.task_description).replace(/"/g, '') %> </p>
+            <% }); %>
+              <br>
+              <button id = scheduleButton><a href= "schedule">Schedule Visit</a></button>
+              <br>
+              <button id = custPay><a href= "customerLookup">Service History</a></button>
+       </div>
+          </div>
          </div>
     </body>
   </html>

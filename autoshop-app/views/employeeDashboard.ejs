@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<meta name = "viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel  = "stylesheet" href = "AutoRepairStyle.css">
+
+<html>
+<body>
+   
+        <h1 id = "h1">
+            Employee Dashboard 
+            <form method="POST" action="/logout" style="margin-bottom: 20px;">
+                <button type="submit"><%= user.employee_fname %> <%= user.employee_lname %> (Logout)</button> 
+              </form>
+        </h1>
+        <div class = listContainer>
+
+            <div id = "lisitingsButtons">
+
+            <select id="navigation" > Visits
+                <option value = "sList">Visits</option>
+                <option value = "svcList">Services</option>
+                <option value = "eList">Employees</option>
+                <option value = "vList">Vehicles</option>
+                <option value = "cstList">Customers</option>
+
+            </select>
+
+            <span id="searchSpan">
+
+
+            <input type = button id ="goButton" value = "Refresh">
+
+            </span>
+            
+            </div>
+ </div>
+
+ <div id ="sList">
+            <table class = "listingTable">
+               <tr>
+                <th width = 100px> Visit ID </th>
+                <th width = 100px> Time(Mins)</th>
+                <th width = 120px> Date </th>
+                <th width = 205px> Customer </th>
+                <th width = 205px> E-Mail </th>
+                 <th width = 190px> Service Notes </th>
+                <th width = 110px> Vehicle</th>
+                <th width = 100px> Total $ </th>
+                <th width = 70px> </th>
+               
+        
+            </tr> 
+            <% visit.forEach(item => { %>
+                <tr>
+                    <td><%= JSON.stringify(item.visit_id) %></td>
+                    <td><%= JSON.stringify(item.serviceTimeMins).replace(/"/g, '') %></td>
+                    <td><%= JSON.stringify(item.schedule_date).replace(/"/g, '') %></td>
+                    <td><%= JSON.stringify(item.customer_fname).replace(/"/g, '') %> <%= JSON.stringify(item.customer_lname).replace(/"/g, '') %></td>
+                    <td><%= JSON.stringify(item.email).replace(/"/g, '') %></td>
+                    <td><%= JSON.stringify(item.visit_notes).replace(/"/g, '') %> </td>
+                    <td><%= JSON.stringify(item.vehicleInfo).replace(/"/g, '') %> </td>
+                    <td><%= JSON.stringify(item.invoice_price).replace(/"/g, '') %> </td>
+                    <td><button onclick="getCellValue(this)" id = alEdit>Edit</button></td>
+                </tr>
+              <% }); %>
+
+
+            </table>
+
+            <button id = add> <a href="addListing"> Add </a> </button>
+       
+ </div>
+
+ <div id ="svcList" hidden>
+    <table id = svcTable>
+        <tr>
+            <th width = 70px>Service ID</th>
+            <th width = 100px>Name</th>
+            <th width = 150px>Description</th>
+            <th width = 100px>Duration (Mins)</th>
+            <th width = 100px>Price</th>
+            <th width = 50px></th>
+        </tr>
+        
+        <% service.forEach(item => { %>
+            <tr>
+                <td><%= JSON.stringify(item.task_id) %></td>
+                <td><%= JSON.stringify(item.task_name).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.task_description).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.duration).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.task_price).replace(/"/g, '') %></td>
+                <td><button onclick="getCellValue(this)" id = svcEdit>Edit</button></td>
+            </tr>
+          <% }); %>
+    </table>
+
+    <button id="svcAdd">Add</button>
+ </div>
+
+<div id = eList hidden>
+            <table id ="lEmployees">
+                <tr>
+                    <th width = 80px>Employee ID</th>
+                    <th width = 100px>Employee Name</th>
+                    <th width = 90px>Employee Role</th>
+                    <th width = 120px>Active</th>
+                    <th width = 70px></th>
+                    
+                </tr>
+                <% employee.forEach(item => { %>
+                    <tr>
+                        <td><%= JSON.stringify(item.employee_id) %></td>
+                        <td><%= JSON.stringify(item.employee_fname).replace(/"/g, '') %> <%= JSON.stringify(item.employee_lname).replace(/"/g, '') %></td>
+                        <td><%= JSON.stringify(item.position).replace(/"/g, '') %></td>
+                        <td><%= JSON.stringify(item.active_status).replace(/"/g, '') %></td>
+                        
+                        <td><button onclick="getCellValue(this)" id = eEdit>Edit</button></td>
+                    </tr>
+                  <% }); %>
+            </table>
+
+            <button id= eAdd>Add</button>
+           
+</div>   
+
+<div id = vList hidden>
+    <table id = vTable>
+        
+        <tr>
+            <th width = 70px>Vehicle ID</th>
+            <th width = 90px>Manufacturer</th>
+            <th width = 90px>Model</th>
+            <th width = 70px>Year</th>
+            <th width = 70px>Color</th>
+            <th width = 100px>Customer</th>
+            <th width = 70px></th>
+        </tr>
+        
+        <% vehicle.forEach(item => { %>
+            <tr>
+                <td><%= JSON.stringify(item.vehicle_id) %></td>
+                <td><%= JSON.stringify(item.manufacturer).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.model).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.year).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.vehicle_color).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.customer_fname).replace(/"/g, '') %> <%= JSON.stringify(item.customer_lname).replace(/"/g, '') %></td>
+                <td><button onclick="getCellValue(this)" id = vEdit>Edit</button></td>
+            </tr>
+          <% }); %>
+    </table>
+    
+    <button id= vAdd>Add</button>
+</div>
+
+<div id =cstList hidden>
+    <table id = cstTable>
+        <tr>
+            <th width = 70px>Customer ID</th>
+            <th width = 100px>Name</th>
+            <th width = 80px>Phone Number</th>
+            <th width = 100px>E-mail</th>
+            <th width = 100px>Address</th>
+            <th width = 50px>Service History</th>
+            <th width = 50px></th>
+        </tr>
+        
+        <% customer.forEach(item => { %>
+            <tr>
+                <td><%= JSON.stringify(item.customer_id) %></td>
+                <td><%= JSON.stringify(item.customer_fname).replace(/"/g, '') %> <%= JSON.stringify(item.customer_lname).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.mobile).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.email).replace(/"/g, '') %></td>
+                <td><%= JSON.stringify(item.address).replace(/"/g, '') %></td>
+                <td><form method="post" action="/customerLookup"><input type="textbox" value=<%= JSON.stringify(item.mobile).replace(/"/g, '') %> name="logPhone" hidden><button type="submit" id = cstEdit>Service History</button></form></td>
+                <td><button onclick="getCellValue(this)" id = cstEdit>Edit</button></td>
+            </tr>
+          <% }); %>
+
+    </table>
+
+    <button id="cstAdd">Add</button>
+</div>    
+
+   
+
+
+<script>
+    const refreshButton = document.getElementById('goButton');
+
+    const refreshPage = () => {
+        location.reload();
+    }
+
+    refreshButton.addEventListener('click', refreshPage);
+
+
+    const dashboardNavigation = document.getElementById('navigation');
+    const navigationIds = getAllDropdownIds('navigation');
+    
+
+    dashboardNavigation.addEventListener('change', function() {
+        
+        var elementToToggle = document.getElementById(this.value);
+        
+        elementToToggle.toggleAttribute('hidden');
+
+        navigationIds.forEach(element => { 
+            var elementToHide = document.getElementById(element);
+            if (element != this.value) {
+                elementToHide.setAttribute('hidden', 'true');
+            }
+            
+        });
+
+    });
+
+    function getAllDropdownIds(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        const ids = [];
+
+        if (dropdown) {
+            for (let i = 0; i < dropdown.options.length; i++) {
+            const optionId = dropdown.options[i].value; // or dropdown.options[i].getAttribute('id')
+            if (optionId) {
+                ids.push(optionId);
+            }
+            }
+        }
+
+        return ids;
+    }
+
+    async function navigateWithPost(url, data) {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            window.location.href = response.url;
+        } else {
+            console.error('POST request failed');
+        }
+    }
+
+
+    function customerServiceHistory(button) {
+            
+            const row = button.closest('tr');
+            const cell = row.cells[2];
+            const cellValue = cell.textContent;
+            // Display the value
+            console.log(cellValue);
+            navigateWithPost('/customerLookup', { logPhone: cellValue });
+        }
+
+    function getCellValue(button) {
+            // Get the row of the button
+            const row = button.closest('tr');
+            // Get the first cell in the row
+            const cell = row.cells[0];
+            // Get the value of the cell
+            const cellValue = cell.textContent;
+            // Display the value
+            alert(cellValue);
+        }
+    
+</script>
+</body>
+</html>

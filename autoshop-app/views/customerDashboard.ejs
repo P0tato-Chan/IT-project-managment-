@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<meta name = "viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel  = "stylesheet" href = "AutoRepairStyle.css">
+
+<body>
+
+        <h1 id = h1>
+            Welcome <%= customer.customer_fname %> <%= customer.customer_lname %>
+        </h1>
+
+<div id="sHistory"> Service History</div>
+        <div class = historyBalance>
+
+            <table class = history>
+                
+                
+                <tr>
+                    <th width = 80px>Visit ID</th>
+                    <th width = 80px>Date</th>
+                    <th width = 80px>Time (Mins)</th>
+                    <th width = 120px>Service Notes</th>
+                    <th width = 80px>Payed</th>
+                    <th width = 80px>Price</th>
+                    <th width = 80px>Invoice</th>
+                </tr>
+                <% data.forEach(item => { %>
+                    <tr>
+                        <td><%= JSON.stringify(item.visit_id) %></td>
+                        <td><%= JSON.stringify(item.schedule_date) %></td>
+                        <td><%= JSON.stringify(item.serviceTimeMins).replace(/"/g, '') %></td>
+                        <td><%= JSON.stringify(item.visit_notes).replace(/"/g, '') %></td>
+                        <td><%= JSON.stringify(item.payment_status).replace(/"/g, '') %> </td>
+                        <td><%= JSON.stringify(item.invoice_price).replace(/"/g, '') %></td>
+                        <% if (item.payment_status == 0) { %>
+                        <td><button onclick="getCellValue(this)" id = "invoice"> Send Invoice </button></td>
+                        <% } %>
+                    </tr>
+                  <% }); %>
+
+            </table>
+                
+                <br>
+  
+        </div>
+
+        <div id = balance>
+                Balance: 
+
+                <div id = cDamount>
+                $<%= JSON.stringify(data[0].totalBalance).replace(/"/g, '') %>
+                </div>
+                <br> 
+        </div>
+            
+            <div id = cButtons>
+            <button id="newApt"> <a href="schedule" Appointment> New  Appointment </a></button>
+            </div>
+
+            <div id="logout">
+            <a href="/" id = "cdl">Logout</a>
+        </div>
+
+        <script>
+            
+        
+
+        </script>
+
+    </body>
+
+</html>

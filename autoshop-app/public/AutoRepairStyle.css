@@ -28,11 +28,11 @@
  background-color: rgb(228, 18, 18);
  color: white;
  height: 10%;
- width: 120%;
- left: -10%;
- margin-top: -10%;
+ width: 100%;
+ margin-top: 0;
  margin-bottom: 3%;
  padding-top: 12px;
+ padding-bottom: 10px;
  position: relative;
  text-align: center;
  font-weight: 550;
@@ -42,43 +42,49 @@
 
 #mServiceList{
 position: relative;
+padding: 8%;
+padding-bottom: 9%;
 }
 
 #mainInfo{
 color: black;
 font-family: sans-serif;
-font-size: 130%;
-float: right;
-position:relative;
-text-align: left;
-margin-top: 10%;
-margin-right: 4%;
+margin:auto;
+margin-top: 4%;
+width: fit-content;
+height: auto;
+position: relative;
+border-radius: 5px;
 border-color: black;
 border-style: solid;
-border-radius: 5px;
-height: 200%;
-width: 80%;
-padding: 4%;
-padding-bottom: 1%;
-
+font-size: 150%;
+min-width: 25%;
+justify-content: center;
 }
 
 a{
 text-decoration: none;
 color: white;
 }
+#mPButtons{
+position: relative;
+margin-left: 3%;
+
+}
 #scheduleButton{
   background-color: rgb(228, 18, 18);
   border: none;
   color: white;
   border-radius: 4px;
-  font-size: 22px;
+  font-size: 75%;
   text-decoration: none;
-  margin-top: -8%;
-  width: 90%;
-  height: 50%;
+  position:relative;
+  width: fit-content;
+  min-width: 150px;
+  height: 55px;
   font-weight:bold;
-  float: left;
+  left: 30%;
+ 
 }
 
 #scheduleButton:active{
@@ -87,16 +93,36 @@ color: white;
 
 }  
 
+#custPay{
+background-color: rgb(228, 18, 18);
+border: none;
+color: white;
+border-radius: 4px;
+font-size: 80%;
+text-decoration: none;
+position:relative;
+width: fit-content;
+height: 55px;
+font-weight:bold;
+left: 30%;
+margin-top: 3%;
+padding: 5px;
+}
+
+#custPay:active{
+transform: scale(0.9);
+}
+
 #login{
   background-color: rgb(228, 18, 18);
   border: none;
   color: white;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 40%;
   font-weight: bolder;
-  padding: 8px;
-  padding-left:16px;
-  padding-right: 16px;
+  width: fit-content;
+  height: auto;
+  padding: 2px;
   cursor: pointer;
   position:relative;
   float: right;
@@ -111,16 +137,8 @@ color: white;
   transform: scale(0.9);
 }  
 
-#mContainer{
-height: 100%;
-width: 50%;
-position:relative;
-margin: auto;
-margin-top: 5%;
-background-color: blue;
-}
-
 /* Employee Login Page */
+
 
 #empLoginInfo{
 height: 250px;
@@ -137,7 +155,6 @@ border-radius: 7px;
 margin-top: 8%;
 margin-bottom: 2%;
 padding-top: 30px;
-
 }
 
 #fEmpID{
@@ -172,6 +189,10 @@ background-color: black;
 #lSubmit:active{
 transform: scale(0.9);
 }
+
+#eLh{
+text-align: center;
+}
 #empLhome{
 color: black;
 top: 5%;
@@ -179,7 +200,6 @@ position: relative;
 cursor: pointer;
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 font-size: 20px;
-left: 48%;
 }
 
 #empLhome:hover{
@@ -190,132 +210,21 @@ transform: scale(0.9);
 }
 
 /* Schedule Visit */
-
-#scheduler{
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-font-size: 20px;
-font-weight:650;
-height: 30em;
-width: 50%;
-color: white;
-background-color: rgb(228, 18, 18);
-border-radius: 5px;
+#sSchedule{
 position: relative;
-margin: auto;
-margin-top: 5%;
-padding: 10px;
-}
-
-#sDate{
-border-style: none;
+background-color: black;
+color: white;
+border: none;
+height: 30px;
+width: 20%;
 border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-}
-
-#sTime{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-}
-
-#service{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-}
-
-#appointInfo{
-float: right;
-position:relative;
-margin-right: 10%;
-margin-top: 7px;
-}
-
-#custInfo{
-float: left;
-position:relative;
-margin-top:-3%;
 margin-left: 10%;
-}
-
-#fName{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-}
-
-#lName{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-}
-
-#fAddress{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-
-}
-
-#fZip{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-
-}
-
-#fState{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-width: 168px;
-margin-bottom: 10px;
-}
-
-#phoneNumb{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-}
-
-#e-Mail{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-}
-
-#plateNumb{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-}
-
-#model{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
-}
-#year{
-border-style: none;
-border-radius: 3px;
-height: 23px;
-margin-bottom: 10px;
+cursor: pointer;
 }
 
 #sHome{
 color: black;
-top: 5%;
+top: 15%;
 position: relative;
 cursor: pointer;
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -330,28 +239,26 @@ color: rgb(228, 18, 18);
 #sHome:active{
 transform: scale(0.9);
 }
-
-#sSchedule{
-border-style: none;
-border-radius: 3px;
-height: 60px;
-width: 150px;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-font-size: 20px;
-color: white;
-background-color: black;
-position: relative;
-float: left;
-cursor: pointer;
-left: 25%;
-margin-top: 70%;
-z-index: 1;
-}
 #sSchedule:active{
 transform: scale(0.9);
 }
 
 /* Appointmet Listings */
+
+#alLogout{
+background-color: black;
+color: white;
+border: none;
+font-size: 18px;
+cursor: pointer;
+float: right;
+margin-top: .8%;
+
+margin-right: 2%;
+}
+#alLogout:hover{
+color: rgb(228, 18, 18);
+}
 
 #lisitingsButtons{
 background-color: rgb(228, 18, 18);
@@ -373,6 +280,18 @@ text-align: center;
 font-size: 20px;
 border-style:none ;
 }
+
+#navigation{
+  margin-left: 1%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: white;
+  border-radius: 4px;
+  width: 100px;
+  height: 25px;
+  text-align: center;
+  font-size: 20px;
+  border-style:none ;
+  }
 
 #searchSpan{
 float: right;
@@ -407,7 +326,7 @@ background-color: black;
 color: white;
 text-align: center;
 height: 27px;
-width: 30px;
+width: 70px;
 border-radius: 2px;
 cursor: pointer;
 }
@@ -427,6 +346,23 @@ margin:auto;
 margin-top: 4%;
 }
 
+#alEdit{
+float: right;
+margin-right: 3%;
+margin-top: 2%;
+color: white;
+background-color: black;
+height: 50px;
+width: 120px;
+text-align: center;
+font-size: 18px;
+border-radius: 4px;
+cursor: pointer;
+border-style: none;
+}
+#alEdit:active{
+transform: scale(0.9);
+}
 #add{
 float: right;
 margin-right: 8%;
@@ -439,6 +375,7 @@ text-align: center;
 font-size: 18px;
 border-radius: 4px;
 cursor: pointer;
+border-style: none;
 }
 
 #add:active{
@@ -464,13 +401,238 @@ text-align: center;
 font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 color: black;
 }
+/* End Appoinment Listing*/
+
+/*Employee Listing Table*/
+
+#lEmployees{
+height: 30em;
+width: 90%;
+border-color: rgb(228, 18, 18);
+border-style: solid;
+border-radius: 5px;
+position: relative;
+margin:auto;
+margin-top: 4%;
+}
+
+#eAdd{
+float: right;
+margin-right: 8%;
+margin-top: 2%;
+margin-left: 1%;
+color: white;
+background-color: black;
+height: 45px;
+width: 100px;
+text-align: center;
+font-size: 15px;
+border-radius: 4px;
+cursor: pointer;
+border-style: none;
+}
+#eAdd:active{
+transform: scale(0.9);
+}
+#eEdit{
+float: right;
+margin-right: 3%;
+margin-top: 2%;
+color: white;
+background-color: black;
+height: 45px;
+width: 100px;
+text-align: center;
+font-size: 18px;
+border-radius: 4px;
+cursor: pointer;
+border-style: none;
+}
+#eEdit:active{
+transform: scale(0.9);
+}
+
+/*End Employee listing Table*/
+
+/*Vehicle Listing Table*/
+
+#vTable{
+height: 30em;
+width: 90%;
+border-color: rgb(228, 18, 18);
+border-style: solid;
+border-radius: 5px;
+position: relative;
+margin:auto;
+margin-top: 4%;
+}
+
+#vAdd{
+float: right;
+margin-right: 8%;
+margin-top: 2%;
+margin-left: 1%;
+color: white;
+background-color: black;
+height: 45px;
+width: 100px;
+text-align: center;
+font-size: 15px;
+border-radius: 4px;
+cursor: pointer;
+}
+#vAdd:active{
+transform: scale(0.9);
+}
+#vEdit{
+float: right;
+margin-right: 3%;
+margin-top: 2%;
+color: white;
+background-color: black;
+height: 45px;
+width: 100px;
+text-align: center;
+font-size: 18px;
+border-radius: 4px;
+cursor: pointer;
+}
+#vEdit:active{
+transform: scale(0.9);
+}
+/*End of Vehicle Listing Table*/
+
+/* Customer listing Table */
+
+#cstTable{
+height: 30em;
+width: 90%;
+border-color: rgb(228, 18, 18);
+border-style: solid;
+border-radius: 5px;
+position: relative;
+margin:auto;
+margin-top: 4%;
+}
+
+#cstInvoice{
+border:none;
+background: none;
+cursor: pointer;
+text-decoration: underline;
+}
+#cstInvoice:hover{
+color:rgb(228, 18, 18);
+}
+
+#cstEdit{
+float: right;
+margin-right: 5%;
+margin-top: 2%;
+margin-left: 1%;
+color: white;
+background-color: black;
+height: 45px;
+width: 100px;
+text-align: center;
+font-size: 15px;
+border-radius: 4px;
+cursor: pointer;
+border-style: none;
+}
+#cstEdit:active{
+transform: scale(0.9);
+}
+
+#cstAdd{
+  float: right;
+  margin-right: 5%;
+  margin-top: 2%;
+  margin-left: 1%;
+  color: white;
+  background-color: black;
+  height: 45px;
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  border-style: none;
+  }
+  #cstAdd:active{
+  transform: scale(0.9);
+  }
+/* End Customer Listing Table */
+
+
+/* Service listing Table */
+
+#svcTable{
+  height: 30em;
+  width: 90%;
+  border-color: rgb(228, 18, 18);
+  border-style: solid;
+  border-radius: 5px;
+  position: relative;
+  margin:auto;
+  margin-top: 4%;
+  }
+  
+  #svcInvoice{
+  border:none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+  }
+  #svcInvoice:hover{
+  color:rgb(228, 18, 18);
+  }
+  
+  #svcEdit{
+  float: right;
+  margin-right: 5%;
+  margin-top: 2%;
+  margin-left: 1%;
+  color: white;
+  background-color: black;
+  height: 45px;
+  width: 100px;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  border-style: none;
+  }
+  #svcEdit:active{
+  transform: scale(0.9);
+  }
+  
+  #svcAdd{
+    float: right;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-left: 1%;
+    color: white;
+    background-color: black;
+    height: 45px;
+    width: 100px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border-style: none;
+    }
+    #svcAdd:active{
+    transform: scale(0.9);
+    }
+  /* End Service Listing Table */
 
 /* Add Listing */
 
 .addContainer{
 margin:auto;
 margin-top: 7%;
-width: 35%;
+width: fit-content;
 height: auto;
 background-color: rgb(228, 18, 18);
 position: relative;
@@ -654,6 +816,20 @@ margin-bottom: 5%;
 color: white;
 }
 
+#alTime{
+position: relative;
+width: auto;
+height: fit-content;
+text-align: center;
+margin-right:18%;
+margin-bottom: 4%;
+}
+#aTime{
+border: none;
+background-color: rgb(228, 18, 18);
+color: white;
+}
+
 #aBack{
 position: relative;
 background-color: black;
@@ -678,6 +854,7 @@ border-radius: 3px;
 margin-left: 7%;
 cursor: pointer;
 }
+
 #aAdd:active{
 transform: scale(0.9);
 }
@@ -685,4 +862,184 @@ transform: scale(0.9);
 position: relative;
 margin-top:2%;
 margin-left: 15%;
+}
+/*End of Add Listing*/
+
+/* Customer Dashboard */
+
+.historyBalance{
+position: relative;
+margin-top: 4%;
+}
+.history{
+border-color: rgb(228, 18, 18);
+margin: auto;
+border-style: solid;
+border-radius: 4px;
+padding-bottom: 1%;
+margin-top: 1%;
+}
+#newApt{
+position: relative;
+background-color: black;
+color: white;
+border: none;
+height: 30px;
+width: fit-content;
+border-radius: 3px;
+margin-left: 7%;
+cursor: pointer;
+font-weight: 550;
+padding: 3px;
+}
+
+#newApt:active{
+transform: scale(0.9);
+}
+
+#invoice{
+position: relative;
+background-color: black;
+color: white;
+border: none;
+height: 30px;
+width: fit-content;
+border-radius: 3px;
+margin-left: 7%;
+cursor: pointer;
+font-weight: 550;
+}
+
+#invoice:active{
+transform: scale(0.9);
+}
+
+#balance{
+width: 25%;
+height: 40%;
+border-radius: 4px; 
+padding: 4px;
+position: relative;
+margin: auto;
+background-color: rgb(228, 18, 18);
+color: white;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 22px;
+
+}
+
+#cDamount{
+
+color: white;
+position: relative;
+width: auto;
+height: 30px;
+float: right;
+z-index: 1;
+margin-right: 6%;
+
+
+}
+
+#cButtons{
+text-align: center;
+width:auto;
+height:auto;
+position: relative;
+margin: auto;
+margin-top: 4%;
+margin-right: 6.5%;
+
+}
+
+#sHistory{
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 35px;
+font-weight: 550;
+position: relative;
+width: auto;
+height: auto;
+margin:auto;
+text-align: center;
+margin-top: 3%;
+}
+
+#logout{
+text-align: center;
+margin-top: 3%;
+}
+
+#cdl{
+color: rgb(0, 0, 0);
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 24px;
+position: relative;
+}
+
+/* End of Customer Dashboard*/
+
+/*Customer Login*/
+#custLoginInfo{
+height: 120px;
+width: 280px;
+background-color: rgb(228, 18, 18);
+color: white;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 20px;
+font-weight: bold;
+text-align: center;
+position:relative;
+margin:auto;
+border-radius: 7px;
+margin-top: 8%;
+margin-bottom: 2%;
+padding-top: 30px;
+
+}
+
+#logPhone{
+border-style:none ;
+height: 25px;
+width: 175px;
+border-radius: 4px;
+margin-top: 5%;
+margin-bottom: 7%;
+}
+
+#custLSubmit{
+border-style: none;
+padding: 4px;
+padding-left: 8px;
+padding-right: 8px;
+border-radius: 2px;
+position: relative;
+margin-top: 2%;
+cursor: pointer;
+color: white;
+background-color: black;
+}
+#custLSubmit:active{
+transform: scale(0.9);
+}
+
+#custLhome{
+text-align: center;
+}
+
+#cLh{
+color: black;
+top: 5%;
+width: 20%;
+height: 20%;
+position: relative;
+cursor: pointer;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 20px;
+}
+
+#custLhome:hover{
+color:rgb(228, 18, 18);
+}
+#custLhome:active{
+transform: scale(0.9);
 }
