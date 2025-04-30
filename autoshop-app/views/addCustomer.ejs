@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<meta name = "viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel  = "stylesheet" href = "AutoRepairStyle.css">
+
+<html>
+<body>
+   
+        <h1 id = "h1">
+            <%= entry.customer_id ? "Update" : "Create" %> Customer
+        </h1>
+
+        <div class = addContainer>
+
+            <div class = "aInfo">
+                <form method="post" action="/addCustomer">
+                    <% if (entry.customer_id) { %>
+                        <input type="hidden" name="id" value="<%= entry.customer_id %>">
+                      <% } %>
+                  
+                      <label>First Name:</label><br>
+                      <input type="text" name="firstname" value="<%= entry.customer_fname || '' %>"><br>
+                  
+                      <label>Last Name:</label><br>
+                      <input type="text" name="lastname" value="<%= entry.customer_lname || '' %>"><br>
+                  
+                      <label>Address:</label><br>
+                      <input type="text" name="address" value="<%= entry.address || '' %>"><br>
+                  
+                      <label>Mobile Phone:</label><br>
+                      <input type="text" name="mobilephone" value="<%= entry.mobile || '' %>"><br>
+                  
+                      <label>Email:</label><br>
+                      <input type="email" name="email" value="<%= entry.email || '' %>"><br><br>
+                  
+                    <br>
+                    <span id="aButtons">
+                        <button type="button" id="aBack" onclick="goBack()">Back</button>
+                        <button id="aAdd" type="submit"><%= entry.customer_id ? "Update" : "Create" %></button>
+                    </span>
+                </form>
+            <br>
+
+            
+            </div>
+
+        </div>
+        
+
+</body>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</html>

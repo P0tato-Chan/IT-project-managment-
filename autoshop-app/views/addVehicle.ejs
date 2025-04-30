@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<meta name = "viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel  = "stylesheet" href = "AutoRepairStyle.css">
+
+<html>
+<body>
+   
+        <h1 id = "h1">
+            <%= entry.customer_id ? "Update" : "Create" %> Vehicle
+        </h1>
+
+        <div class = addContainer>
+
+            <div class = "aInfo">
+                <form method="post" action="/addVehicle">
+                    <% if (entry.vehicle_id) { %>
+                        <input type="hidden" name="vehicle_id" value="<%= entry.vehicle_id %>">
+                      <% } %>
+                  
+                      <label>VIN:</label><br>
+                      <input type="text" name="vin" value="<%= entry.vin || '' %>"><br>
+                  
+                      <label>License Plate:</label><br>
+                      <input type="text" name="license_plate" value="<%= entry.license_plate || '' %>"><br>
+                  
+                      <label>Model:</label><br>
+                      <input type="text" name="model" value="<%= entry.model || '' %>"><br>
+                  
+                      <label>Manufacturer:</label><br>
+                      <input type="text" name="manufacturer" value="<%= entry.manufacturer || '' %>"><br>
+                  
+                      <label>Year:</label><br>
+                      <input type="number" name="year" value="<%= entry.year || '' %>"><br>
+                  
+                      <label>Color:</label><br>
+                      <input type="text" name="vehicle_color" value="<%= entry.vehicle_color || '' %>"><br>
+                  
+                      <label>Customer:</label><br>
+                      <select name="customer_id">
+                        <% customers.forEach(function(cust) { %>
+                          <option value="<%= cust.customer_id %>" <%= entry.customer_id == cust.customer_id ? 'selected' : '' %>>
+                            <%= cust.customer_fname %> <%= cust.customer_lname %>
+                          </option>
+                        <% }) %>
+                      </select><br><br>
+                  
+                    <br>
+                    <span id="aButtons">
+                        <button type="button" id="aBack" onclick="goBack()">Back</button>
+                        <button id="aAdd" type="submit"><%= entry.vehicle_id ? "Update" : "Create" %></button>
+                    </span>
+                </form>
+            <br>
+
+            
+            </div>
+
+        </div>
+        
+
+</body>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</html>

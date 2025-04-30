@@ -146,12 +146,13 @@
                 <td><%= JSON.stringify(item.year).replace(/"/g, '') %></td>
                 <td><%= JSON.stringify(item.vehicle_color).replace(/"/g, '') %></td>
                 <td><%= JSON.stringify(item.customer_fname).replace(/"/g, '') %> <%= JSON.stringify(item.customer_lname).replace(/"/g, '') %></td>
-                <td><button onclick="getCellValue(this)" id = vEdit>Edit</button></td>
+                <td><button onclick="location.href='/addVehicle?id=<%= JSON.stringify(item.vehicle_id) %>';" id= svcEdit>Edit</button></td>
             </tr>
           <% }); %>
     </table>
+
+    <button onclick="location.href='/addVehicle';" id="cstAdd">Add</button>
     
-    <button id= vAdd>Add</button>
 </div>
 
 <div id =cstList hidden>
@@ -174,13 +175,13 @@
                 <td><%= JSON.stringify(item.email).replace(/"/g, '') %></td>
                 <td><%= JSON.stringify(item.address).replace(/"/g, '') %></td>
                 <td><form method="post" action="/customerLookup"><input type="textbox" value=<%= JSON.stringify(item.mobile).replace(/"/g, '') %> name="logPhone" hidden><button type="submit" id = cstEdit>Service History</button></form></td>
-                <td><button onclick="getCellValue(this)" id = cstEdit>Edit</button></td>
+                <td><button onclick="location.href='/addCustomer?id=<%= JSON.stringify(item.customer_id) %>';" id= svcEdit>Edit</button></td>
             </tr>
           <% }); %>
 
     </table>
 
-    <button id="cstAdd">Add</button>
+    <button onclick="location.href='/addCustomer';" id="cstAdd">Add</button>
 </div>    
 
    
@@ -232,32 +233,7 @@
         return ids;
     }
 
-    async function navigateWithPost(url, data) {
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
 
-        if (response.ok) {
-            window.location.href = response.url;
-        } else {
-            console.error('POST request failed');
-        }
-    }
-
-
-    function customerServiceHistory(button) {
-            
-            const row = button.closest('tr');
-            const cell = row.cells[2];
-            const cellValue = cell.textContent;
-            // Display the value
-            console.log(cellValue);
-            navigateWithPost('/customerLookup', { logPhone: cellValue });
-        }
 
     function getCellValue(button) {
             // Get the row of the button

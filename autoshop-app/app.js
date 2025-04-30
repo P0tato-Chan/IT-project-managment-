@@ -342,6 +342,128 @@ app.post('/addEmployee', async (req, res) => {
   }
 });
 
+app.get('/addCustomer', async (req, res) => {
+  const id = req.query.id;
+
+  if (!id) {
+    return res.render('addCustomer', { entry: {} });
+  }
+
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('id', sql.Int, id)
+      .query('SELECT * FROM customer WHERE customer_id = @id');
+
+    res.render('addCustomer', { entry: result.recordset[0] || {} });
+  } catch (err) {
+    console.error('GET error:', err);
+    res.status(500).send('Database error');
+  }
+});
+
+
+app.post('/addCustomer', async (req, res) => {
+  const { id, firstname, lastname, address, mobilephone, email } = req.body;
+
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('firstname', sql.VarChar, firstname)
+      .input('lastname', sql.VarChar, lastname)
+      .input('address', sql.VarChar, address)
+      .input('mobilephone', sql.VarChar, mobilephone)
+      .input('email', sql.VarChar, email);
+
+    if (id) {
+      await result
+        .input('id', sql.Int, id)
+        .query(`
+          UPDATE customer 
+          SET customer_fname=@firstname, customer_lname=@lastname, address=@address, 
+              mobile=@mobilephone, email=@email 
+          WHERE customer_id=@id
+        `);
+    } else {
+      await result.query(`
+        INSERT INTO customer (customer_fname, customer_lname, address, mobile, email)
+        VALUES (@firstname, @lastname, @address, @mobilephone, @email)
+      `);
+    }
+
+    res.redirect('/employeeDashboard');
+  } catch (err) {
+    console.error('POST error:', err);
+    res.status(500).send('Error saving contact');
+  }
+});
+
+app.get('/addVehicle', async (req, res) => {
+  const id = req.query.id;
+  try {
+    const pool = await poolPromise;
+
+    const customersResult = await pool.request().query('SELECT customer_id, customer_fname, customer_lname FROM customer');
+
+    let vehicle = {};
+    if (id) {
+      const vehicleResult = await pool.request()
+        .input('vehicle_id', sql.Int, id)
+        .query('SELECT * FROM vehicle WHERE vehicle_id = @vehicle_id');
+
+      vehicle = vehicleResult.recordset[0] || {};
+    }
+
+    res.render('addVehicle', {
+      entry: vehicle,
+      customers: customersResult.recordset
+    });
+  } catch (err) {
+    console.error('addVehicle error:', err);
+    res.status(500).send('Database error');
+  }
+});
+
+
+app.post('/addVehicle', async (req, res) => {
+  const {
+    vehicle_id, vin, license_plate, model,
+    manufacturer, year, vehicle_color, customer_id
+  } = req.body;
+
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('vin', sql.VarChar, vin)
+      .input('license_plate', sql.VarChar, license_plate)
+      .input('model', sql.VarChar, model)
+      .input('manufacturer', sql.VarChar, manufacturer)
+      .input('year', sql.Int, year)
+      .input('vehicle_color', sql.VarChar, vehicle_color)
+      .input('customer_id', sql.Int, customer_id);
+
+    if (vehicle_id) {
+      await result
+        .input('vehicle_id', sql.Int, vehicle_id)
+        .query(`
+          UPDATE vehicle
+          SET vin=@vin, license_plate=@license_plate, model=@model,
+              manufacturer=@manufacturer, year=@year, vehicle_color=@vehicle_color, customer_id=@customer_id
+          WHERE vehicle_id=@vehicle_id
+        `);
+    } else {
+      await result.query(`
+        INSERT INTO vehicle (vin, license_plate, model, manufacturer, year, vehicle_color, customer_id)
+        VALUES (@vin, @license_plate, @model, @manufacturer, @year, @vehicle_color, @customer_id)
+      `);
+    }
+
+    res.redirect('/employeeDashboard');
+  } catch (err) {
+    console.error('addVehicle error:', err);
+    res.status(500).send('Error saving vehicle');
+  }
+});
 
 app.use((req, res) => {
   res.redirect('/');
