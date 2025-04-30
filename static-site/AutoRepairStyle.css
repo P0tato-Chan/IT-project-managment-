@@ -51,7 +51,7 @@
   font-family: sans-serif;
   margin:auto;
   margin-top: 4%;
-  width: 30%;
+  width: fit-content;
   height: auto;
   position: relative;
   border-radius: 5px;
@@ -66,15 +66,20 @@ a{
 text-decoration: none;
 color: white;
 }
+#mPButtons{
+  position: relative;
+  margin-left: 3%;
+
+}
 #scheduleButton{
     background-color: rgb(228, 18, 18);
     border: none;
     color: white;
     border-radius: 4px;
-    font-size: 100%;
+    font-size: 75%;
     text-decoration: none;
     position:relative;
-    width: 35%;
+    width: fit-content;
     height: 55px;
     font-weight:bold;
     left: 30%;
@@ -92,14 +97,15 @@ color: white;
   border: none;
   color: white;
   border-radius: 4px;
-  font-size: 100%;
+  font-size: 80%;
   text-decoration: none;
   position:relative;
-  width: 35%;
+  width: fit-content;
   height: 55px;
   font-weight:bold;
   left: 30%;
   margin-top: 3%;
+  padding: 5px;
 }
 
 #custPay:active{
@@ -113,7 +119,7 @@ color: white;
     border-radius: 4px;
     font-size: 40%;
     font-weight: bolder;
-    width: 12%;
+    width: fit-content;
     height: auto;
     padding: 2px;
     cursor: pointer;
@@ -238,6 +244,21 @@ color:rgb(228, 18, 18);
 
 /* Appointmet Listings */
 
+#alLogout{
+background-color: black;
+color: white;
+border: none;
+font-size: 18px;
+cursor: pointer;
+float: right;
+margin-top: .8%;
+
+margin-right: 2%;
+}
+#alLogout:hover{
+  color: rgb(228, 18, 18);
+}
+
 #lisitingsButtons{
   background-color: rgb(228, 18, 18);
   position: relative;
@@ -312,6 +333,23 @@ cursor: pointer;
   margin-top: 4%;
 }
 
+#alEdit{
+  float: right;
+  margin-right: 3%;
+  margin-top: 2%;
+  color: white;
+  background-color: black;
+  height: 50px;
+  width: 120px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  border-style: none;
+}
+#alEdit:active{
+  transform: scale(0.9);
+}
 #add{
   float: right;
   margin-right: 8%;
@@ -324,6 +362,7 @@ cursor: pointer;
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
+  border-style: none;
 }
 
 #add:active{
@@ -377,6 +416,7 @@ td{
   font-size: 15px;
   border-radius: 4px;
   cursor: pointer;
+  border-style: none;
 }
 #eAdd:active{
   transform: scale(0.9);
@@ -393,6 +433,7 @@ td{
   font-size: 18px;
   border-radius: 4px;
   cursor: pointer;
+  border-style: none;
 }
 #eEdit:active{
   transform: scale(0.9);
@@ -448,7 +489,7 @@ td{
 }
 /*End of Vehicle Listing Table*/
 
-/* Customer lsiting Table */
+/* Customer listing Table */
 
 #cstTable{
   height: 30em;
@@ -484,6 +525,7 @@ td{
   font-size: 15px;
   border-radius: 4px;
   cursor: pointer;
+  border-style: none;
 }
 #cstEdit:active{
   transform: scale(0.9);
@@ -496,7 +538,7 @@ td{
 .addContainer{
   margin:auto;
   margin-top: 7%;
-  width: 35%;
+  width: fit-content;
   height: auto;
   background-color: rgb(228, 18, 18);
   position: relative;
@@ -677,6 +719,20 @@ td{
   margin-bottom: 5%;
 }
 #aService::placeholder{
+  color: white;
+}
+
+#alTime{
+  position: relative;
+  width: auto;
+  height: fit-content;
+  text-align: center;
+  margin-right:18%;
+  margin-bottom: 4%;
+}
+#aTime{
+  border: none;
+  background-color: rgb(228, 18, 18);
   color: white;
 }
 
