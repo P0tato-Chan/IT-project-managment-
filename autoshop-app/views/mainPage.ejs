@@ -23,7 +23,7 @@
           <div id = mServiceList>
             
             <% data.forEach(item => { %>
-              <%= JSON.stringify(item.task_id) %>) <%= JSON.stringify(item.task_name).replace(/"/g, '') %> 
+              <%= JSON.stringify(item.task_name).replace(/"/g, '') %> 
               <p style="padding-left: 30px; font-size: 14px;"><%= JSON.stringify(item.task_description).replace(/"/g, '') %> </p>
             <% }); %>
               <br>

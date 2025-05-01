@@ -34,7 +34,7 @@
                         <td><%= JSON.stringify(item.payment_status).replace(/"/g, '') %> </td>
                         <td><%= JSON.stringify(item.invoice_price).replace(/"/g, '') %></td>
                         <% if (item.payment_status == 0) { %>
-                        <td><button onclick="getCellValue(this)" id = "invoice"> Send Invoice </button></td>
+                        <td><button onclick="location.href='mailto:<%= customer.email %>?subject=Remaining%20balance&body=Service%20Date%3A%20<%= JSON.stringify(item.schedule_date) %>%0D%0A%0D%0AService%20Summary%3A%0D%0A<%= JSON.stringify(item.visit_notes) %>%0D%0A%0D%0ATotal%3A%20<%= JSON.stringify(item.invoice_price) %>';" id = "invoice"> Send Invoice </button></td>
                         <% } %>
                     </tr>
                   <% }); %>

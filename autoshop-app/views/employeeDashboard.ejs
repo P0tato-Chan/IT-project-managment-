@@ -55,20 +55,21 @@
                 <tr>
                     <td><%= JSON.stringify(item.visit_id) %></td>
                     <td><%= JSON.stringify(item.serviceTimeMins).replace(/"/g, '') %></td>
-                    <td><%= JSON.stringify(item.schedule_date).replace(/"/g, '') %></td>
+                    <td><%= JSON.stringify(item.schedule_date.toISOString().split('T')[0]).replace(/"/g, '') %></td>
                     <td><%= JSON.stringify(item.customer_fname).replace(/"/g, '') %> <%= JSON.stringify(item.customer_lname).replace(/"/g, '') %></td>
                     <td><%= JSON.stringify(item.email).replace(/"/g, '') %></td>
                     <td><%= JSON.stringify(item.visit_notes).replace(/"/g, '') %> </td>
                     <td><%= JSON.stringify(item.vehicleInfo).replace(/"/g, '') %> </td>
                     <td><%= JSON.stringify(item.invoice_price).replace(/"/g, '') %> </td>
-                    <td><button onclick="getCellValue(this)" id = alEdit>Edit</button></td>
+                    <td><button onclick="location.href='/updateVisit/<%= JSON.stringify(item.visit_id) %>';" id= alEdit>Edit</button></td>
+                    
                 </tr>
               <% }); %>
 
 
             </table>
 
-            <button id = add> <a href="addListing"> Add </a> </button>
+            <button id = add> <a href="schedule"> Add </a> </button>
        
  </div>
 

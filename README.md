@@ -14,3 +14,12 @@ Steps to run locally:
 - Open powershell and cd to 'autoshop-app' directory
 - Run 'npm install' to install the module dependencies
 - Run 'node app.js' to start 
+
+#Testing:
+
+    Employee Login:
+    - ID: 1
+    - Pin: 123
+
+    Customer Lookup:
+    - PhoneNumber: 01234567890

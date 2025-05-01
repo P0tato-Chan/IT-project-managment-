@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8"/>
+<meta name = "viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel  = "stylesheet" href = "../AutoRepairStyle.css">
+
+<html>
+<body>
+   
+        <h1 id = "h1">
+            Update Visit
+        </h1>
+
+        <div class = addContainer>
+
+            <div class = "aInfo">
+                <form method="POST">
+                    <h2>Visit Info:</h2>
+                    <label>Customer:</label>
+                    <select name="customer_id">
+                      <% customers.forEach(c => { %>
+                        <option value="<%= c.customer_id %>" <%= c.customer_id === visit.customer_id ? 'selected' : '' %>>
+                          <%= c.customer_fname %> <%= c.customer_lname %>
+                        </option>
+                      <% }) %>
+                    </select><br><br>
+                
+                    <label>Vehicle:</label>
+                    <select name="vehicle_id">
+                      <% vehicles.forEach(v => { %>
+                        <option value="<%= v.vehicle_id %>" <%= v.vehicle_id === visit.vehicle_id ? 'selected' : '' %>>
+                            <%= v.year %> - <%= v.model %>
+                        </option>
+                      <% }) %>
+                    </select><br><br>
+                
+                    <label>Visit Notes:</label><br>
+                    <textarea name="visit_notes"><%= visit.visit_notes %></textarea><br><br>
+                
+                    <label>Active:</label>
+                    <input type="checkbox" name="active_status" <%= visit.active_status ? 'checked' : '' %>><br><br>
+                
+                    <hr>
+                
+                
+                    <h2>Schedule</h2>
+                    <input type="hidden" name="schedule_id" value="<%= schedule.schedule_id %>">
+
+                    <label>Employee:</label>
+                    <select name="employee_id">
+                      <% employees.forEach(v => { %>
+                        <option value="<%= v.employee_id %>" <%= v.employee_id === schedule.employee_id ? 'selected' : '' %>>
+                            <%= v.employee_fname %> <%= v.employee_lname %>
+                        </option>
+                      <% }) %>
+                    </select><br><br>
+
+
+                    <label>Appointment Date:</label>
+                    <input type="date" name="schedule_date" value="<%= schedule.schedule_date.toISOString().split('T')[0] %>"><br><br>
+                
+ 
+                
+                    <label>Planned Repair:</label>
+                    <select name="planned_repair">
+                      <% services.forEach(s => { %>
+                        <option value="<%= s.task_id %>" <%= s.task_id === schedule.planned_repair ? 'selected' : '' %>>
+                          <%= s.task_name %>
+                        </option>
+                      <% }) %>
+                    </select><br><br>
+                
+                    <label>Actual Repair:</label>
+                    <select name="actual_repair">
+                      <% services.forEach(s => { %>
+                        <option value="<%= s.task_id %>" <%= s.task_id === schedule.actual_repair ? 'selected' : '' %>>
+                          <%= s.task_name %>
+                        </option>
+                      <% }) %>
+                    </select><br><br>
+                
+                    <hr>
+                
+                    
+                    <h2>Invoice</h2>
+                    <input type="hidden" name="invoice_id" value="<%= invoice.invoice_id %>">
+                
+                    <label>Price:</label>
+                    <input type="number" step="0.01" name="price" value="<%= invoice.invoice_price %>"><br><br>
+                
+                    <label>Invoice Payed:</label>
+                    <input type="checkbox" name="status" <%= invoice.payment_status ? 'checked' : '' %>><br><br>
+                
+                  
+                    <br>
+                    <span id="aButtons">
+                        <button type="button" id="aBack" onclick="goBack()">Back</button>
+                        <button id="aAdd" type="submit">Update</button>
+                    </span>
+                </form>
+            <br>
+
+            
+            </div>
+
+        </div>
+        
+
+</body>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</html>

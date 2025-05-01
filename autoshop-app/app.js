@@ -91,30 +91,115 @@ app.get('/customerDashboard', async (req, res) => {
 
 });
 
-app.get('/schedule', (req, res) => {
+app.get('/schedule', async (req, res) => {
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .query('SELECT * FROM service');
+
+    res.render('appointmentSetting', { services: result.recordset  });
+  } catch (err) {
+    console.error('Error fetching employee:', err);
+    res.status(500).send('Database error');
+  }
   res.render('appointmentSetting', { error: null });
 });
 
 app.post('/schedule', async (req, res) => {
-  const {} = req.body;
+  const { employee_fname, employee_lname, mobile, email, address, date,  model, year, plate, planned_repair } = req.body;
+
   try {
     const pool = await poolPromise;
-    const result = await pool.request()
-      .input('username', sql.VarChar, fEmpID)
-      .input('password', sql.VarChar, fPassword)
-      .query('SELECT employee_id, employe');
 
-      if (result.recordset.length > 0) {
-        //console.log(result.recordset[0]);
-        req.session.user = result.recordset[0];
-        res.redirect('/employeeDashboard');
-      } else {
-        res.render('login', { error: 'Invalid username or password' });
+    // Get service price
+    const serviceResult = await pool.request()
+      .input('task_id', sql.Int, planned_repair)
+      .query('SELECT task_price FROM service WHERE task_id = @task_id');
+    const price = serviceResult.recordset[0].task_price;
+
+    //Insert customer
+    const customerResult = await pool.request()
+    .input('fname', sql.VarChar, employee_fname)
+    .input('lname', sql.VarChar, employee_lname)
+    .input('address', sql.VarChar, address)
+    .input('mobile', sql.VarChar, mobile)
+    .input('email', sql.VarChar, email)
+      .query(`
+        INSERT INTO customer (customer_fname, customer_lname, address, mobile, email)
+        OUTPUT INSERTED.customer_id
+        VALUES (@fname, @lname, @address, @mobile, @email)
+      `);
+    const customer_id = customerResult.recordset[0].customer_id;
+
+    // Insert Invoice
+    const invoiceResult = await pool.request()
+      .input('price', sql.Decimal(10, 2), price)
+      .input('payment_status', sql.Bit, 0)
+      .input('customer_id', sql.Int, customer_id)
+      .query(`
+        INSERT INTO invoice (invoice_price, payment_status, customer_id)
+        OUTPUT INSERTED.invoice_id
+        VALUES (@price, @payment_status, @customer_id)
+      `);
+    const invoice_id = invoiceResult.recordset[0].invoice_id;
+
+    // Insert Vehicle
+
+    function createRandomString(length) {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let result = "";
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
       }
-    } catch (err) {
-      console.error(err);
-      res.render('login', { error: 'An error occurred' });
+      return result;
     }
+    
+    var vin = createRandomString(15);
+
+    const vehicleResult = await pool.request()
+    .input('license_plate', sql.VarChar, plate)
+    .input('vin', sql.VarChar, vin)
+    .input('manufacturer', sql.VarChar, "unknown")
+    .input('model', sql.VarChar, model)
+    .input('customer_id', sql.Int, customer_id)
+    .input('year', sql.Int, year)
+      .query(`
+        INSERT INTO vehicle (license_plate, model, year, customer_id, vin, manufacturer)
+        OUTPUT INSERTED.vehicle_id
+        VALUES (@license_plate, @model, @year, @customer_id, @vin, @manufacturer)
+      `);
+
+    const vehicle_id = vehicleResult.recordset[0].vehicle_id;
+
+    // Insert Schedule 
+    const scheduleResult = await pool.request()
+      .input('vehicle_id', sql.Int, vehicle_id)
+      .input('schedule_date', sql.Date, date)
+      .input('planned_repair', sql.Int, planned_repair)
+      .query(`
+        INSERT INTO repair_schedule ( vehicle_id, schedule_date, planned_repair)
+        OUTPUT INSERTED.schedule_id
+        VALUES (@vehicle_id, @schedule_date, @planned_repair)
+      `);
+    const schedule_id = scheduleResult.recordset[0].schedule_id;
+
+    // Insert Visit
+    await pool.request()
+      .input('customer_id', sql.Int, customer_id)
+      .input('vehicle_id', sql.Int, vehicle_id)
+      .input('repair_schedule', sql.Int, schedule_id)
+      .input('invoice_id', sql.Int, invoice_id)
+      .input('active_status', sql.Bit, 1)
+      .query(`
+        INSERT INTO visit (customer_id, vehicle_id, repair_schedule, invoice_id, active_status)
+        VALUES (@customer_id, @vehicle_id, @repair_schedule, @invoice_id, @active_status)
+      `);
+
+    res.redirect('/');
+  } catch (err) {
+    console.error('Schedule POST Error:', err);
+    res.send('Error scheduling appointment');
+  }
 });
 
 
@@ -231,7 +316,6 @@ app.get('/addService', async (req, res) => {
   const id = req.query.id;
 
   if (!id) {
-    // New Entry
     return res.render('addService', { entry: {} });
   }
 
@@ -462,6 +546,109 @@ app.post('/addVehicle', async (req, res) => {
   } catch (err) {
     console.error('addVehicle error:', err);
     res.status(500).send('Error saving vehicle');
+  }
+});
+
+app.get('/updateVisit/:id', async (req, res) => {
+  const visitId = req.params.id;
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request();
+
+    const [
+      visitRes, customersRes, vehiclesRes, schedulesRes, invoicesRes, servicesRes, employeesRes
+    ] = await Promise.all([
+      result.query(`SELECT * FROM visit WHERE visit_id = ${visitId}`),
+      result.query(`SELECT customer_id, customer_fname, customer_lname FROM customer`),
+      result.query(`SELECT vehicle_id, model, year FROM vehicle`),
+      result.query(`SELECT * FROM repair_schedule`),
+      result.query(`SELECT * FROM invoice`),
+      result.query(`SELECT task_id, task_name FROM service`),
+      result.query(`SELECT employee_id, employee_fname, employee_lname FROM employee`)
+    ]);
+
+    const visit = visitRes.recordset[0];
+    const schedule = schedulesRes.recordset.find(s => s.schedule_id === visit.repair_schedule);
+    const invoice = invoicesRes.recordset.find(i => i.invoice_id === visit.invoice_id);
+
+    res.render('updateVisit', {
+      visit,
+      schedule,
+      invoice,
+      customers: customersRes.recordset,
+      vehicles: vehiclesRes.recordset,
+      schedules: schedulesRes.recordset,
+      invoices: invoicesRes.recordset,
+      services: servicesRes.recordset,
+      employees: employeesRes.recordset
+    });
+
+  } catch (err) {
+    console.error('Form Load Error:', err);
+    res.status(500).send('Error loading form');
+  }
+});
+
+
+app.post('/updateVisit/:id', async (req, res) => {
+  const visitId = req.params.id;
+  const {
+    customer_id, vehicle_id, schedule_id, invoice_id, visit_notes, active_status,
+    schedule_date, planned_repair, actual_repair,
+    price, status, employee_id
+  } = req.body;
+
+  try {
+    const pool = await poolPromise;
+    const request = await pool.request();
+
+    await request
+      .input('visit_id', sql.Int, visitId)
+      .input('customer_id', sql.Int, customer_id)
+      .input('vehicle_id', sql.Int, vehicle_id)
+      .input('visit_notes', sql.VarChar, visit_notes)
+      .input('active_status', sql.Bit, active_status === 'on' ? 1 : 0)
+      .query(`
+        UPDATE visit SET
+          customer_id = @customer_id,
+          vehicle_id = @vehicle_id,
+          visit_notes = @visit_notes,
+          active_status = @active_status
+        WHERE visit_id = @visit_id
+      `);
+
+   
+    await request
+      .input('schedule_id', sql.Int, schedule_id)
+      .input('schedule_date', sql.Date, schedule_date)
+      .input('planned_repair', sql.Int, planned_repair)
+      .input('actual_repair', sql.Int, actual_repair)
+      .input('employee_id', sql.Int, employee_id)
+      .query(`
+        UPDATE repair_schedule SET
+          schedule_date = @schedule_date,
+          planned_repair = @planned_repair,
+          actual_repair = @actual_repair,
+          employee_id = @employee_id
+        WHERE schedule_id = @schedule_id
+      `);
+
+ 
+    await request
+      .input('invoice_id', sql.Int, invoice_id)
+      .input('invoice_price', sql.Decimal(10, 2), price)
+      .input('payment_status', sql.Bit, status === 'on' ? 1 : 0)
+      .query(`
+        UPDATE invoice SET
+          invoice_price = @invoice_price,
+          payment_status = @payment_status
+        WHERE invoice_id = @invoice_id
+      `);
+
+      res.redirect('/employeeDashboard');
+  } catch (err) {
+    console.error('Update Error:', err);
+    res.status(500).send('Update failed');
   }
 });
 
